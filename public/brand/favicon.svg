@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64.0 64.0" role="img" aria-label="Synthetic Practitioner">
+<title>Synthetic Practitioner</title>
+<g transform="translate(0 0) scale(1.0)">
+  <mask id="f" maskUnits="userSpaceOnUse" x="0" y="0" width="64" height="64">
+    <rect x="4" y="4" width="56" height="48" rx="14" fill="#fff"/><path d="M36 50 50 61V44z" fill="#fff"/>
+    <rect x="0" y="24.5" width="64" height="7" fill="#000"/><rect x="23.5" y="0" width="7" height="64" fill="#000"/>
+  </mask>
+  <rect width="64" height="64" fill="#1e6b5c" mask="url(#f)"/>
+</g>
+</svg>

@@ -21,6 +21,16 @@ wrangler.toml               Pages + D1 config
 
 The example skin photos are illustrations drawn in SVG (no real patient images). Their geometry is in the `CASES` array in `script.js`, and their text is under `case.<id>.*` in `i18n.js`.
 
+## Brand
+
+Logo, icons, colours and type are documented at `/brand/` (`public/brand/index.html`, not indexed by search engines).
+
+- **Mark:** a speech bubble carrying an off-centre Nordic cross, in scrubs green. The cross is cut out, so it works on any background.
+- **Type:** Albert Sans (Google Fonts). The wordmark is lowercase Albert Sans SemiBold, outlined in the SVGs.
+- **Files:** `public/brand/` holds the logo SVGs (colour, white, one-colour, stacked), app icons, favicon and social images (`og-image.png` EN, `og-image-da.png` DA).
+- `scripts/build-brand.py` regenerates the logo SVGs. The PNGs were rendered from those SVGs in a headless browser.
+- `og:image` is a relative URL. Once the domain is known, change it to an absolute URL in `index.html` so every social network picks it up.
+
 ## Languages
 
 The language is picked before the page renders: a saved choice (from the DA/EN switch) wins, otherwise the first Danish or English entry in the browser's language list (`navigator.languages`). Faroese and Greenlandic browsers get Danish; everything else falls back to English.

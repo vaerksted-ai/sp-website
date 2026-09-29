@@ -32,16 +32,30 @@
   <meta property="og:title" data-i18n-attr="content:meta.title" content="Synthetic Practitioner — a friendly AI GP for you and your family">
   <meta property="og:description" data-i18n-attr="content:meta.ogDesc" content="Chat, call or video with an AI practitioner, day or night. Join the waitlist for early access.">
   <meta name="theme-color" content="#1e6b5c">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231e6b5c'/%3E%3Cpath d='M13 8h6v5h5v6h-5v5h-6v-5H8v-6h5z' fill='%23fff'/%3E%3C/svg%3E">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="/brand/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="/brand/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/brand/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="/brand/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
     <defs>
-      <symbol id="i-cross" viewBox="0 0 32 32"><path d="M13 8h6v5h5v6h-5v5h-6v-5H8v-6h5z" fill="currentColor" stroke="none"/></symbol>
+      <symbol id="i-mark" viewBox="0 0 64 64">
+        <mask id="mark-cut" maskUnits="userSpaceOnUse" x="0" y="0" width="64" height="64">
+          <rect x="4" y="4" width="56" height="48" rx="14" fill="#fff"/><path d="M36 50 50 61V44z" fill="#fff"/>
+          <rect x="0" y="24.5" width="64" height="7" fill="#000"/><rect x="23.5" y="0" width="7" height="64" fill="#000"/>
+        </mask>
+        <rect width="64" height="64" fill="currentColor" stroke="none" mask="url(#mark-cut)"/>
+      </symbol>
       <symbol id="i-thermo" viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"/><path d="M11.5 9v7"/></symbol>
       <symbol id="i-rash" viewBox="0 0 24 24"><circle cx="7" cy="7.5" r="1.6"/><circle cx="15.5" cy="6" r="1.2"/><circle cx="11.5" cy="12.5" r="2"/><circle cx="17.5" cy="14.5" r="1.4"/><circle cx="6.5" cy="16.5" r="1.3"/><circle cx="12.5" cy="19" r="1"/></symbol>
       <symbol id="i-wind" viewBox="0 0 24 24"><path d="M17.7 7.7a2.5 2.5 0 1 1 1.8 4.3H2"/><path d="M9.6 4.6A2 2 0 1 1 11 8H2"/><path d="M12.6 19.4A2 2 0 1 0 14 16H2"/></symbol>
@@ -72,8 +86,8 @@
   <header class="nav">
     <div class="container nav-inner">
       <a href="#top" class="logo" data-i18n-attr="aria-label:nav.home" aria-label="Synthetic Practitioner home">
-        <span class="logo-mark" aria-hidden="true"><svg viewBox="0 0 32 32" width="30" height="30"><rect width="32" height="32" rx="8" fill="currentColor"/><path d="M13 8h6v5h5v6h-5v5h-6v-5H8v-6h5z" fill="var(--on-brand)"/></svg></span>
-        <span>Synthetic Practitioner</span>
+        <svg class="logo-mark" viewBox="0 0 64 64" aria-hidden="true"><use href="#i-mark"/></svg>
+        <span class="logo-word">synthetic practitioner</span>
       </a>
       <nav data-i18n-attr="aria-label:nav.label" aria-label="Main">
         <ul class="nav-links">
@@ -136,7 +150,7 @@
             <!-- CHAT -->
             <div class="panel" id="panel-chat" role="tabpanel" aria-labelledby="tab-chat" data-panel="chat">
               <div class="panel-head">
-                <span class="avatar-sm" aria-hidden="true"><svg viewBox="0 0 32 32"><use href="#i-cross"/></svg></span>
+                <span class="avatar-sm" aria-hidden="true"><svg viewBox="0 0 64 64"><use href="#i-mark"/></svg></span>
                 <div><strong>Synthetic Practitioner</strong><span data-i18n="chat.sub">AI practitioner · replies in seconds</span></div>
               </div>
               <div class="chat-body">
@@ -181,7 +195,7 @@
                   <div class="ai-tile">
                     <div class="ai-presence" aria-hidden="true">
                       <span class="pulse"></span><span class="pulse"></span>
-                      <span class="ai-core"><svg viewBox="0 0 32 32"><use href="#i-cross"/></svg></span>
+                      <span class="ai-core"><svg viewBox="0 0 64 64"><use href="#i-mark"/></svg></span>
                     </div>
                     <div class="ai-bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
                     <span class="ai-name">Synthetic Practitioner <span class="ai-badge">AI</span></span>
@@ -287,7 +301,7 @@
 
             <div class="demo-feedback" aria-live="polite">
               <div class="fb-head">
-                <span class="avatar-sm" aria-hidden="true"><svg viewBox="0 0 32 32"><use href="#i-cross"/></svg></span>
+                <span class="avatar-sm" aria-hidden="true"><svg viewBox="0 0 64 64"><use href="#i-mark"/></svg></span>
                 <div><strong data-i18n="photos.notice">What I notice</strong><span id="fb-sub"></span></div>
               </div>
               <ol class="findings" id="findings"></ol>
@@ -547,7 +561,10 @@
 
   <footer class="footer">
     <div class="container footer-inner">
-      <div data-i18n="footer.by"><strong>Synthetic Practitioner</strong> · an idea by vaerksted</div>
+      <div>
+        <picture><source srcset="/brand/logo-white.svg" media="(prefers-color-scheme: dark)"><img class="footer-logo" src="/brand/logo.svg" alt="Synthetic Practitioner" width="198" height="34"></picture>
+        <div data-i18n="footer.by"><strong>Synthetic Practitioner</strong> · an idea by vaerksted</div>
+      </div>
       <p class="disclaimer" data-i18n="footer.disclaimer">
         Synthetic Practitioner is in development and not yet available. It isn't a medical device on the market, doesn't give medical
         advice today and doesn't replace a doctor. Examples on this page are illustrations. In an emergency, call 112.

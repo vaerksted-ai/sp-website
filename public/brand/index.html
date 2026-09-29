@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Synthetic Practitioner — brand</title>
+  <link rel="icon" href="/brand/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --green: #1e6b5c; --green-dark: #144d42; --scrub: #7fb5a6; --tint: #e3f0ec; --fog: #f2f7f5;
+      --ink: #10211d; --ink-soft: #4a5e59; --line: #dbe6e2; --alert: #b42318;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #fff; color: var(--ink); font: 17px/1.6 "Albert Sans", system-ui, sans-serif; }
+    .wrap { max-width: 1040px; margin: 0 auto; padding: 56px 20px 96px; }
+    h1 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 600; letter-spacing: -.025em; line-height: 1.06; margin: 24px 0 12px; }
+    h2 { font-size: 1.5rem; font-weight: 600; letter-spacing: -.015em; margin: 64px 0 8px; padding-top: 24px; border-top: 1px solid var(--line); }
+    p { color: var(--ink-soft); max-width: 42em; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; margin-top: 20px; }
+    .tile { border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
+    .tile .art { height: 180px; display: grid; place-items: center; padding: 24px; }
+    .tile .art img { max-height: 132px; max-width: 100%; }
+    .tile .meta { padding: 12px 16px; font-size: .9rem; display: flex; justify-content: space-between; gap: 8px; border-top: 1px solid var(--line); }
+    .tile .meta a { color: var(--green); font-weight: 600; text-decoration: none; }
+    .dark { background: var(--green); } .ink { background: var(--ink); } .fog { background: var(--fog); }
+    .swatch { border-radius: 14px; border: 1px solid var(--line); overflow: hidden; }
+    .swatch div:first-child { height: 96px; }
+    .swatch div:last-child { padding: 10px 14px; font-size: .88rem; }
+    .swatch b { display: block; }
+    .swatch code { color: var(--ink-soft); }
+    .type-sample { font-size: 3rem; font-weight: 600; letter-spacing: -.025em; line-height: 1.1; margin: 16px 0 4px; }
+    ul.rules { padding-left: 1.2em; color: var(--ink-soft); }
+    ul.rules li { margin-bottom: 6px; }
+    .do-dont { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 16px; }
+    .do-dont > div { border: 1px solid var(--line); border-radius: 14px; padding: 16px 20px; }
+    .do-dont h3 { margin: 0 0 8px; font-size: 1rem; }
+    .do-dont .no h3 { color: var(--alert); }
+    .do-dont .yes h3 { color: var(--green); }
+    @media (max-width: 640px) { .do-dont { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <img src="/brand/logo.svg" alt="Synthetic Practitioner" height="40">
+    <h1>Brand basics</h1>
+    <p>Synthetic Practitioner should feel like Nordic healthcare at its best: calm, clear, honest and quietly warm. Lots of white space, one confident green, plain words.</p>
+
+    <h2>The mark</h2>
+    <p>A speech bubble for the conversation, carrying the off-centre Nordic cross in the colour of hospital scrubs: a health service you talk to, made for the Nordics. The cross is always cut out of the bubble, so the mark works on any background.</p>
+    <div class="grid">
+      <div class="tile"><div class="art"><img src="/brand/logo.svg" alt="Horizontal logo"></div><div class="meta">Primary logo <a href="/brand/logo.svg" download>SVG</a></div></div>
+      <div class="tile"><div class="art dark"><img src="/brand/logo-white.svg" alt="Horizontal logo, white"></div><div class="meta">On green or photos <a href="/brand/logo-white.svg" download>SVG</a></div></div>
+      <div class="tile"><div class="art fog"><img src="/brand/logo-black.svg" alt="Horizontal logo, one colour"></div><div class="meta">One colour <a href="/brand/logo-black.svg" download>SVG</a></div></div>
+      <div class="tile"><div class="art"><img src="/brand/logo-stacked.svg" alt="Stacked logo"></div><div class="meta">Stacked <a href="/brand/logo-stacked.svg" download>SVG</a></div></div>
+      <div class="tile"><div class="art dark"><img src="/brand/logo-stacked-white.svg" alt="Stacked logo, white"></div><div class="meta">Stacked, white <a href="/brand/logo-stacked-white.svg" download>SVG</a></div></div>
+      <div class="tile"><div class="art"><img src="/brand/mark.svg" alt="Mark" style="height:96px"></div><div class="meta">Mark only <a href="/brand/mark.svg" download>SVG</a> <a href="/brand/mark-white.svg" download>White</a></div></div>
+      <div class="tile"><div class="art fog"><img src="/brand/icon-512.png" alt="App icon" style="height:120px;border-radius:26px"></div><div class="meta">App icon <a href="/brand/icon-512.png" download>PNG 512</a> <a href="/brand/app-icon.svg" download>SVG</a></div></div>
+      <div class="tile"><div class="art fog"><img src="/brand/og-image.png" alt="Social image"></div><div class="meta">Social image <a href="/brand/og-image.png" download>EN</a> <a href="/brand/og-image-da.png" download>DA</a></div></div>
+    </div>
+    <ul class="rules">
+      <li>Keep clear space around the logo of at least the height of the cross bar × 2.</li>
+      <li>Smallest size: mark 16 px, horizontal logo 24 px high.</li>
+      <li>The wordmark is always lowercase, set in Albert Sans SemiBold. In running text, write "Synthetic Practitioner".</li>
+    </ul>
+
+    <h2>Colour</h2>
+    <p>Scrubs green carries the brand. Everything else stays quiet. Red is reserved for emergencies and warnings, never for decoration.</p>
+    <div class="grid">
+      <div class="swatch"><div style="background:#1e6b5c"></div><div><b>Scrubs green</b><code>#1E6B5C</code> · buttons, mark, links</div></div>
+      <div class="swatch"><div style="background:#144d42"></div><div><b>Deep green</b><code>#144D42</code> · hover, dark sections</div></div>
+      <div class="swatch"><div style="background:#7fb5a6"></div><div><b>Washed scrubs</b><code>#7FB5A6</code> · accents, illustration</div></div>
+      <div class="swatch"><div style="background:#e3f0ec"></div><div><b>Tint</b><code>#E3F0EC</code> · icon backgrounds, badges</div></div>
+      <div class="swatch"><div style="background:#f2f7f5"></div><div><b>Fog</b><code>#F2F7F5</code> · alternate sections</div></div>
+      <div class="swatch"><div style="background:#10211d"></div><div><b>Ink</b><code>#10211D</code> · text</div></div>
+      <div class="swatch"><div style="background:#b42318"></div><div><b>Alert red</b><code>#B42318</code> · emergencies only</div></div>
+    </div>
+
+    <h2>Typography</h2>
+    <p>Albert Sans, a geometric sans-serif inspired by Scandinavian minimalism (free, Google Fonts, SIL Open Font License). SemiBold with tight tracking for headings; Regular for text.</p>
+    <div class="type-sample">Føler du dig sløj? <span style="color:var(--green)">Lad os snakke.</span></div>
+    <p style="margin-top:0">Albert Sans SemiBold · −2.5% tracking</p>
+
+    <h2>Voice</h2>
+    <div class="do-dont">
+      <div class="yes"><h3>We sound like</h3><ul class="rules"><li>A calm, kind GP at 2 a.m.</li><li>Short sentences, plain Danish and English</li><li>Honest about limits: "a doctor takes over here"</li></ul></div>
+      <div class="no"><h3>We never</h3><ul class="rules"><li>Pretend the AI is a human or a "læge"</li><li>Promise outcomes or use fear</li><li>Use emojis, exclamation-heavy hype or medical jargon</li></ul></div>
+    </div>
+  </div>
+</body>
+</html>
