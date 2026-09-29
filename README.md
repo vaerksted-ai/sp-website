@@ -21,6 +21,17 @@ wrangler.toml               Pages + D1 config
 
 The example skin photos are illustrations drawn in SVG (no real patient images). Their geometry is in the `CASES` array in `script.js`, and their text is under `case.<id>.*` in `i18n.js`.
 
+## Brand
+
+Documented at `/brand/` (`public/brand/index.html`, not indexed).
+
+- **Mark:** a Selbu rose (the eight-petal star of Scandinavian knitwear) charted stitch by stitch on a 13 × 13 grid, so it reads as both a knitting chart and pixels. The four long petals join into a medical plus in scrubs green; the diagonal petals are washed scrubs; a single mint stitch at the heart is the AI.
+- **Type:** Albert Sans (headings, body, lowercase wordmark) and Geist Mono (labels).
+- **Colour:** scrubs green `#1E6B5C`, washed scrubs `#7FB5A6`, mint `#3FD3A4` (small accents only), forest `#0E3B33` for dark sections.
+- **Motif:** the stitch grid: faint stitch dots on dark sections and three stitches before each label.
+- `scripts/build-brand.py` regenerates every SVG in `public/brand/` (`pip install fonttools uharfbuzz`; fonts are fetched from the Google Fonts repo). The PNGs (icons, `og-image*.png`) are rendered from those SVGs in a headless browser.
+- `og:image` is a relative URL. Once the domain is known, make it absolute in `index.html`.
+
 ## Languages
 
 The language is picked before the page renders: a saved choice (from the DA/EN switch) wins, otherwise the first Danish or English entry in the browser's language list (`navigator.languages`). Faroese and Greenlandic browsers get Danish; everything else falls back to English.

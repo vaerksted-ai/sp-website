@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Synthetic Practitioner — brand</title>
+  <link rel="icon" href="/brand/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --green: #1e6b5c; --washed: #7fb5a6; --mint: #3fd3a4; --forest: #0e3b33; --tint: #e3f0ec; --fog: #f2f7f5;
+      --ink: #10211d; --ink-soft: #4a5e59; --line: #dbe6e2; --alert: #b42318;
+      --mono: "Geist Mono", ui-monospace, monospace;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #fff; color: var(--ink); font: 16.5px/1.6 "Albert Sans", system-ui, sans-serif; }
+    .hero {
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E%3Crect x='6.5' y='6.5' width='3' height='3' rx='.6' fill='%23fff' fill-opacity='.07'/%3E%3C/svg%3E"), linear-gradient(135deg, #15493f, var(--forest));
+      color: #fff;
+    }
+    .hero .wrap { display: grid; grid-template-columns: 220px 1fr; gap: 56px; align-items: center; padding-top: 64px; padding-bottom: 64px; }
+    .wrap { max-width: 1040px; margin: 0 auto; padding: 56px 20px; }
+    .label { display: flex; align-items: center; gap: 12px; font: 500 .76rem var(--mono); text-transform: uppercase; letter-spacing: .14em; color: #9fe3cc; margin: 0 0 12px; }
+    .label::before { content: ""; width: 22px; height: 6px; background: radial-gradient(circle, var(--mint) 0 2.4px, transparent 2.6px) 0 0 / 8px 6px repeat-x; }
+    h1 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 600; letter-spacing: -.025em; line-height: 1.06; margin: 0 0 12px; }
+    .hero p { color: #c3dcd4; max-width: 38em; }
+    .hero a { color: #9fe3cc; }
+    h2 { font-size: 1.5rem; font-weight: 600; letter-spacing: -.02em; margin: 56px 0 8px; padding-top: 24px; border-top: 1px solid var(--line); }
+    p { color: var(--ink-soft); max-width: 44em; }
+    a { color: var(--green); }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; margin-top: 20px; }
+    .tile { border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
+    .tile .art { height: 180px; display: grid; place-items: center; padding: 24px; }
+    .tile .art img { max-height: 132px; max-width: 100%; }
+    .tile .meta { padding: 12px 16px; font-size: .88rem; display: flex; justify-content: space-between; gap: 8px; border-top: 1px solid var(--line); }
+    .tile .meta a { font-weight: 600; text-decoration: none; }
+    .dark { background: var(--forest); } .fog { background: var(--fog); }
+    .swatch { border-radius: 14px; border: 1px solid var(--line); overflow: hidden; }
+    .swatch div:first-child { height: 88px; }
+    .swatch div:last-child { padding: 10px 14px; font-size: .86rem; }
+    .swatch b { display: block; }
+    .swatch code { font-family: var(--mono); color: var(--ink-soft); font-size: .8rem; }
+    ul.rules { padding-left: 1.2em; color: var(--ink-soft); }
+    ul.rules li { margin-bottom: 6px; }
+    .chart { display: grid; grid-template-columns: 260px 1fr; gap: 32px; align-items: center; margin-top: 16px; }
+    .chart img { width: 260px; background: var(--fog); border-radius: 14px; padding: 20px; background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px); background-size: 16.9px 16.9px; background-position: 20px 20px; }
+    .type-row { display: grid; grid-template-columns: 220px 1fr; gap: 16px; align-items: baseline; padding: 14px 0; border-bottom: 1px solid var(--line); }
+    .type-row code { font-family: var(--mono); font-size: .8rem; color: var(--ink-soft); }
+    .do-dont { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 16px; }
+    .do-dont > div { border: 1px solid var(--line); border-radius: 14px; padding: 16px 20px; }
+    .do-dont h3 { margin: 0 0 8px; font-size: 1rem; }
+    .do-dont .no h3 { color: var(--alert); }
+    .do-dont .yes h3 { color: var(--green); }
+    @media (max-width: 720px) { .hero .wrap, .do-dont, .type-row, .chart { grid-template-columns: 1fr; } .hero img { max-width: 160px; } }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="wrap">
+      <img src="/brand/mark-white.svg" alt="The Synthetic Practitioner mark" width="220" height="220">
+      <div>
+        <p class="label">Brand kit</p>
+        <h1>synthetic practitioner</h1>
+        <p>A Selbu rose, the eight-petal star of Scandinavian knitwear, charted stitch by stitch. A knitting chart is a grid of pixels, so the mark is Nordic craft and digital at once: a warm, familiar pattern made by a machine. Its four long petals join into a medical plus, and one mint stitch glows at the heart: the AI.</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <h2 style="border:0;padding:0;margin-top:0">The mark</h2>
+    <div class="chart">
+      <img src="/brand/mark.svg" alt="The mark on its 13 × 13 stitch grid">
+      <div>
+        <ul class="rules">
+          <li><strong>Grid:</strong> 13 × 13 stitches, each a rounded square with a small gap, like a knitted or pixel chart.</li>
+          <li><strong>Plus:</strong> the four long petals, joined through the centre, in scrubs green.</li>
+          <li><strong>Star:</strong> the four diagonal petals in washed scrubs, completing the Selbu rose.</li>
+          <li><strong>Heart:</strong> a single mint stitch, the AI. It's the only accent colour in the mark.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="grid">
+      <div class="tile"><div class="art"><img src="/brand/logo.svg" alt="Logo for light backgrounds"></div><div class="meta">Logo <a href="/brand/logo.svg" download>SVG</a></div></div>
+      <div class="tile"><div class="art dark"><img src="/brand/logo-white.svg" alt="Logo for dark backgrounds"></div><div class="meta">Logo, on dark <a href="/brand/logo-white.svg" download>SVG</a></div></div>
+      <div class="tile"><div class="art"><img src="/brand/mark.svg" alt="Mark"></div><div class="meta">Mark <a href="/brand/mark.svg" download>SVG</a> <a href="/brand/mark-white.svg" download>White</a> <a href="/brand/mark-mono.svg" download>Mono</a></div></div>
+      <div class="tile"><div class="art fog"><img src="/brand/icon-512.png" alt="App icon" style="height:120px;border-radius:26px"></div><div class="meta">App icon <a href="/brand/icon-512.png" download>PNG</a> <a href="/brand/app-icon.svg" download>SVG</a></div></div>
+      <div class="tile"><div class="art fog"><img src="/brand/favicon.svg" alt="Favicon" style="height:64px"></div><div class="meta">Favicon <a href="/brand/favicon.svg" download>SVG</a> <a href="/brand/favicon-32.png" download>PNG</a></div></div>
+      <div class="tile"><div class="art dark"><img src="/brand/og-image.png" alt="Social image"></div><div class="meta">Social image <a href="/brand/og-image.png" download>EN</a> <a href="/brand/og-image-da.png" download>DA</a></div></div>
+    </div>
+    <ul class="rules">
+      <li>The wordmark is lowercase Albert Sans SemiBold. In running text, write "Synthetic Practitioner".</li>
+      <li>Always use the files here. Don't redraw the chart, change the stitch count or recolour the heart.</li>
+      <li>Below 24 px, use the favicon (white mark on a green tile).</li>
+    </ul>
+
+    <h2>Colour</h2>
+    <p>Scrubs green carries everything. Mint is the AI's glow and appears in small doses: the heart stitch, the three stitches before a label. Red is for emergencies only.</p>
+    <div class="grid">
+      <div class="swatch"><div style="background:#1e6b5c"></div><div><b>Scrubs green</b><code>#1E6B5C</code> · buttons, links, the plus</div></div>
+      <div class="swatch"><div style="background:#7fb5a6"></div><div><b>Washed scrubs</b><code>#7FB5A6</code> · diagonal petals</div></div>
+      <div class="swatch"><div style="background:#3fd3a4"></div><div><b>Mint</b><code>#3FD3A4</code> · the AI's glow, accents</div></div>
+      <div class="swatch"><div style="background:#0e3b33"></div><div><b>Forest</b><code>#0E3B33</code> · dark sections</div></div>
+      <div class="swatch"><div style="background:#e3f0ec"></div><div><b>Tint</b><code>#E3F0EC</code> · icon backgrounds</div></div>
+      <div class="swatch"><div style="background:#10211d"></div><div><b>Ink</b><code>#10211D</code> · text</div></div>
+      <div class="swatch"><div style="background:#b42318"></div><div><b>Alert red</b><code>#B42318</code> · emergencies only</div></div>
+    </div>
+
+    <h2>Typography</h2>
+    <p>Both free on Google Fonts under the SIL Open Font License.</p>
+    <div class="type-row"><code>Albert Sans 600</code><span style="font-size:2rem;font-weight:600;letter-spacing:-.025em">Føler du dig sløj? <span style="color:var(--green)">Lad os snakke.</span></span></div>
+    <div class="type-row"><code>Albert Sans 400</code><span>Body text. Plain, calm sentences in Danish and English.</span></div>
+    <div class="type-row"><code>Geist Mono 500</code><span style="font-family:var(--mono);text-transform:uppercase;letter-spacing:.14em;font-size:.8rem;color:var(--green)">Labels · status · small caps</span></div>
+
+    <h2>Motif</h2>
+    <p>The stitch grid is the one recurring motif: faint stitch dots on dark sections, three stitches leading each label. Keep it quiet. It should feel like texture, not decoration.</p>
+
+    <h2>Voice</h2>
+    <div class="do-dont">
+      <div class="yes"><h3>We sound like</h3><ul class="rules"><li>A calm, kind GP at 2 a.m.</li><li>Short sentences, plain Danish and English</li><li>Honest about limits: "a doctor takes over here"</li></ul></div>
+      <div class="no"><h3>We never</h3><ul class="rules"><li>Pretend the AI is a human or a "læge"</li><li>Promise outcomes or use fear</li><li>Use emojis, hype or medical jargon</li></ul></div>
+    </div>
+
+    <p style="margin-top:56px;font-size:.9rem">Synthetic Practitioner is an idea by <a href="https://vaerksted.ai" target="_blank" rel="noopener">vaerksted</a>. Files are generated by <code>scripts/build-brand.py</code>.</p>
+  </main>
+</body>
+</html>

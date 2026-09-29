@@ -1,4 +1,5 @@
-/* Palette: Danish hospital scrubs green on clean white. */
+/* Brand: scrubs green on clean white. The mark is a Selbu rose charted in stitches,
+   so a knitting grid (squares, 'stitch' dots) is the recurring motif. See /brand/. */
 :root {
   --bg: #ffffff;
   --surface: #ffffff;
@@ -16,8 +17,10 @@
   --focus: #2f8f7a;
   --radius: 16px;
   --shadow: 0 1px 2px rgba(16, 33, 29, .05), 0 12px 32px rgba(16, 33, 29, .08);
-  --serif: "Fraunces", Georgia, serif;
-  --sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --sans: "Albert Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "Geist Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --mint: #3fd3a4;
+  --forest: #0e3b33;
   color-scheme: light;
 }
 
@@ -49,17 +52,17 @@
 html { scroll-behavior: smooth; scroll-padding-top: 80px; }
 body {
   margin: 0; background: var(--bg); color: var(--ink);
-  font: 16px/1.6 var(--sans); -webkit-font-smoothing: antialiased; overflow-x: hidden;
+  font: 16.5px/1.6 var(--sans); -webkit-font-smoothing: antialiased; overflow-x: hidden;
 }
 img, svg { display: block; }
 a { color: var(--brand); }
 h1, h2, h3, h4 { line-height: 1.15; margin: 0 0 .5em; }
-h1, h2 { font-family: var(--serif); font-weight: 600; letter-spacing: -.01em; }
+h1, h2 { font-weight: 600; letter-spacing: -.025em; line-height: 1.06; }
 h1 { font-size: clamp(2.4rem, 5vw, 3.8rem); }
 h2 { font-size: clamp(1.8rem, 3.5vw, 2.6rem); }
-h1 em, h2 em { color: var(--brand); font-style: italic; }
+h1 em, h2 em { color: var(--brand); font-style: normal; }
 h3 { font-size: 1.08rem; font-weight: 600; }
-h4 { font-size: .75rem; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-soft); font-weight: 600; }
+h4 { font: 500 .7rem var(--mono); text-transform: uppercase; letter-spacing: .12em; color: var(--ink-soft); }
 p { margin: 0 0 1em; }
 
 .icon { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
@@ -67,7 +70,10 @@ p { margin: 0 0 1em; }
 .container { width: 100%; max-width: 1160px; margin: 0 auto; padding: 0 20px; position: relative; }
 .container.narrow { max-width: 780px; }
 
-.eyebrow { font-size: .8rem; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; color: var(--brand); margin-bottom: .8em; }
+.eyebrow { display: flex; align-items: center; gap: 12px; font: 500 .76rem var(--mono); text-transform: uppercase; letter-spacing: .14em; color: var(--brand); margin-bottom: 1.1em; }
+.eyebrow a { color: inherit; text-underline-offset: 3px; }
+/* Three stitches, echoing the mark */
+.eyebrow::before { content: ""; width: 22px; height: 6px; flex-shrink: 0; background: radial-gradient(circle, var(--mint) 0 2.4px, transparent 2.6px) 0 0 / 8px 6px repeat-x; }
 .lead { font-size: 1.12rem; color: var(--ink-soft); max-width: 36em; }
 .section-lead { color: var(--ink-soft); max-width: 44em; font-size: 1.05rem; margin-bottom: 2.5rem; }
 .fineprint { font-size: .85rem; color: var(--ink-soft); margin-top: 1rem; }
@@ -98,7 +104,8 @@ p { margin: 0 0 1em; }
   backdrop-filter: blur(10px); border-bottom: 1px solid var(--line);
 }
 .nav-inner { display: flex; align-items: center; justify-content: space-between; gap: 1rem; height: 64px; }
-.logo { display: flex; align-items: center; gap: .6em; font-weight: 600; color: var(--brand); text-decoration: none; line-height: 1.2; white-space: nowrap; }
+.logo { display: flex; align-items: center; gap: 10px; font-weight: 600; font-size: 1.1rem; letter-spacing: -.01em; color: var(--ink); text-decoration: none; line-height: 1.2; white-space: nowrap; }
+.logo-mark { display: block; width: 34px; height: 34px; flex-shrink: 0; }
 .nav-links { list-style: none; display: flex; gap: 1.4rem; margin: 0; padding: 0; }
 .nav-links a { color: var(--ink-soft); text-decoration: none; font-size: .93rem; white-space: nowrap; }
 .nav-links a:hover { color: var(--ink); }
@@ -142,11 +149,8 @@ p { margin: 0 0 1em; }
 .panel-head, .fb-head { display: flex; gap: .8em; align-items: center; padding: 14px 20px; border-bottom: 1px solid var(--line); }
 .panel-head strong, .fb-head strong { display: block; font-size: .95rem; }
 .panel-head span:not(.avatar-sm), .fb-head span:not(.avatar-sm) { font-size: .8rem; color: var(--ink-soft); }
-.avatar-sm {
-  width: 36px; height: 36px; border-radius: 10px; flex-shrink: 0; display: grid; place-items: center;
-  background: var(--brand); color: var(--on-brand);
-}
-.avatar-sm svg { width: 24px; height: 24px; }
+.avatar-sm { width: 36px; height: 36px; flex-shrink: 0; }
+.avatar-sm img { width: 36px; height: 36px; }
 .mode-note { font-size: .8rem; color: var(--ink-soft); text-align: center; margin: 12px 0 0; }
 
 [data-step] { opacity: 0; transform: translateY(8px); transition: opacity .45s, transform .45s; }
@@ -219,8 +223,8 @@ p { margin: 0 0 1em; }
   box-shadow: 0 8px 24px rgba(0, 0, 0, .3); border: 1px solid rgba(255, 255, 255, .15);
 }
 .ai-presence { position: relative; width: 58px; height: 58px; margin: 0 auto 8px; display: grid; place-items: center; }
-.ai-core { width: 44px; height: 44px; border-radius: 12px; background: #fff; color: #1e6b5c; display: grid; place-items: center; position: relative; }
-.ai-core svg { width: 30px; height: 30px; }
+.ai-core { width: 44px; height: 44px; display: grid; place-items: center; position: relative; }
+.ai-core img { width: 40px; height: 40px; }
 .pulse { position: absolute; inset: 7px; border-radius: 14px; border: 2px solid rgba(255, 255, 255, .5); opacity: 0; animation: ripple 2.4s infinite; }
 .pulse:nth-child(2) { animation-delay: 1.2s; }
 .ai-bars { display: flex; gap: 3px; height: 14px; justify-content: center; align-items: center; margin-bottom: 6px; }
@@ -239,7 +243,7 @@ p { margin: 0 0 1em; }
 .strip { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: var(--surface); }
 .strip-inner { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; padding-top: 24px; padding-bottom: 24px; }
 .strip-inner div { display: flex; flex-direction: column; }
-.strip-inner strong { font-family: var(--serif); font-size: 1.3rem; font-weight: 600; color: var(--brand); }
+.strip-inner strong { font-size: 1.3rem; font-weight: 600; letter-spacing: -.02em; color: var(--brand); }
 .strip-inner span { font-size: .88rem; color: var(--ink-soft); }
 
 /* Sections */
@@ -358,15 +362,19 @@ details[open] > summary::after { transform: translateY(-50%) rotate(45deg); }
 .accordion details p { color: var(--ink-soft); margin: 0 0 18px; }
 
 /* Waitlist */
-.waitlist { background: #144d42; color: #e3f0ec; }
-.waitlist .eyebrow { color: #9fd3c4; }
+.waitlist {
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E%3Crect x='6.5' y='6.5' width='3' height='3' rx='.6' fill='%23fff' fill-opacity='.07'/%3E%3C/svg%3E"), linear-gradient(135deg, #15493f, var(--forest));
+  color: #e3f0ec;
+}
+.waitlist .eyebrow { color: #9fe3cc; }
 .waitlist h2 { color: #fff; }
 .waitlist p { color: #c5ddd6; }
-@media (prefers-color-scheme: dark) { .waitlist { background: #10302a; } }
 .waitlist-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
 .checklist { list-style: none; padding: 0; }
+.waitlist-mark { display: block; width: 160px; height: auto; margin-top: 44px; opacity: .9; }
+@media (max-width: 960px) { .waitlist-mark { display: none; } }
 .checklist li { padding-left: 1.6em; position: relative; margin-bottom: .4em; }
-.checklist li::before { content: "✓"; position: absolute; left: 0; color: #9fd3c4; font-weight: 700; }
+.checklist li::before { content: "✓"; position: absolute; left: 0; color: var(--mint); font-weight: 700; }
 
 .form, .success { background: var(--surface); color: var(--ink); border-radius: 20px; padding: 32px; box-shadow: var(--shadow); }
 .field { margin-bottom: 18px; border: 0; padding: 0; min-width: 0; }
@@ -405,6 +413,9 @@ input[aria-invalid="true"] { border-color: var(--danger); }
 .footer { padding: 48px 0; border-top: 1px solid var(--line); font-size: .87rem; color: var(--ink-soft); }
 .footer-inner { display: grid; grid-template-columns: 1fr 2fr auto; gap: 32px; align-items: start; }
 .footer strong { color: var(--ink); }
+.footer a { color: var(--ink-soft); text-underline-offset: 3px; }
+.footer a:hover { color: var(--brand); }
+.footer-logo { height: 44px; width: auto; margin-bottom: 12px; }
 .disclaimer, .copy { margin: 0; }
 
 /* Responsive */
