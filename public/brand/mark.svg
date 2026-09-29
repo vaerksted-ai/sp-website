@@ -2,9 +2,10 @@
 <title>Synthetic Practitioner</title>
 <g transform="translate(0 0) scale(1.0)">
   <mask id="m" maskUnits="userSpaceOnUse" x="0" y="0" width="64" height="64">
-    <rect x="4" y="4" width="56" height="48" rx="14" fill="#fff"/><path d="M36 50 50 61V44z" fill="#fff"/>
-    <rect x="0" y="24.5" width="64" height="7" fill="#000"/><rect x="23.5" y="0" width="7" height="64" fill="#000"/>
+    <rect width="64" height="64" fill="#fff"/><path d="M32 25.00 A7.88 7.88 0 0 1 32 10.50 A7.88 7.88 0 0 1 32 25.00Z" fill="#000" stroke="#000" stroke-width="3.6" transform="rotate(45 32 32)"/><path d="M32 25.00 A7.88 7.88 0 0 1 32 10.50 A7.88 7.88 0 0 1 32 25.00Z" fill="#000" stroke="#000" stroke-width="3.6" transform="rotate(135 32 32)"/><path d="M32 25.00 A7.88 7.88 0 0 1 32 10.50 A7.88 7.88 0 0 1 32 25.00Z" fill="#000" stroke="#000" stroke-width="3.6" transform="rotate(225 32 32)"/><path d="M32 25.00 A7.88 7.88 0 0 1 32 10.50 A7.88 7.88 0 0 1 32 25.00Z" fill="#000" stroke="#000" stroke-width="3.6" transform="rotate(315 32 32)"/>
   </mask>
-  <rect width="64" height="64" fill="#1e6b5c" mask="url(#m)"/>
+  <g mask="url(#m)"><path d="M32 26.00 A13.43 13.43 0 0 1 32 2.00 A13.43 13.43 0 0 1 32 26.00Z" fill="#1e6b5c" transform="rotate(0 32 32)"/><path d="M32 26.00 A13.43 13.43 0 0 1 32 2.00 A13.43 13.43 0 0 1 32 26.00Z" fill="#1e6b5c" transform="rotate(90 32 32)"/><path d="M32 26.00 A13.43 13.43 0 0 1 32 2.00 A13.43 13.43 0 0 1 32 26.00Z" fill="#1e6b5c" transform="rotate(180 32 32)"/><path d="M32 26.00 A13.43 13.43 0 0 1 32 2.00 A13.43 13.43 0 0 1 32 26.00Z" fill="#1e6b5c" transform="rotate(270 32 32)"/></g>
+  <path d="M32 25.00 A7.88 7.88 0 0 1 32 10.50 A7.88 7.88 0 0 1 32 25.00Z" fill="#7fb5a6" transform="rotate(45 32 32)"/><path d="M32 25.00 A7.88 7.88 0 0 1 32 10.50 A7.88 7.88 0 0 1 32 25.00Z" fill="#7fb5a6" transform="rotate(135 32 32)"/><path d="M32 25.00 A7.88 7.88 0 0 1 32 10.50 A7.88 7.88 0 0 1 32 25.00Z" fill="#7fb5a6" transform="rotate(225 32 32)"/><path d="M32 25.00 A7.88 7.88 0 0 1 32 10.50 A7.88 7.88 0 0 1 32 25.00Z" fill="#7fb5a6" transform="rotate(315 32 32)"/>
+  <circle cx="32" cy="32" r="3.2" fill="#1e6b5c"/>
 </g>
 </svg>

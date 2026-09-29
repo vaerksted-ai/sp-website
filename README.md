@@ -25,7 +25,7 @@ The example skin photos are illustrations drawn in SVG (no real patient images).
 
 Logo, icons, colours and type are documented at `/brand/` (`public/brand/index.html`, not indexed by search engines).
 
-- **Mark:** a speech bubble carrying an off-centre Nordic cross, in scrubs green. The cross is cut out, so it works on any background.
+- **Mark:** the Selbu rose, the eight-petal star of Scandinavian knitwear, drawn as a healing flower whose four long petals form a medical plus. Two-tone in colour, one colour on white/black.
 - **Type:** Albert Sans (Google Fonts). The wordmark is lowercase Albert Sans SemiBold, outlined in the SVGs.
 - **Files:** `public/brand/` holds the logo SVGs (colour, white, one-colour, stacked), app icons, favicon and social images (`og-image.png` EN, `og-image-da.png` DA).
 - `scripts/build-brand.py` regenerates the logo SVGs. The PNGs were rendered from those SVGs in a headless browser.

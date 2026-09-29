@@ -1,10 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512.0 512.0" role="img" aria-label="Synthetic Practitioner">
 <title>Synthetic Practitioner</title>
-<rect width="512" height="512" fill="#1e6b5c"/><g transform="translate(96 104) scale(5)">
+<rect width="512" height="512" fill="#1e6b5c"/><g transform="translate(72 72) scale(5.75)">
   <mask id="m" maskUnits="userSpaceOnUse" x="0" y="0" width="64" height="64">
-    <rect x="4" y="4" width="56" height="48" rx="14" fill="#fff"/><path d="M36 50 50 61V44z" fill="#fff"/>
-    <rect x="0" y="24.5" width="64" height="7" fill="#000"/><rect x="23.5" y="0" width="7" height="64" fill="#000"/>
+    <rect width="64" height="64" fill="#fff"/><path d="M32 25.00 A7.88 7.88 0 0 1 32 10.50 A7.88 7.88 0 0 1 32 25.00Z" fill="#000" stroke="#000" stroke-width="3.6" transform="rotate(45 32 32)"/><path d="M32 25.00 A7.88 7.88 0 0 1 32 10.50 A7.88 7.88 0 0 1 32 25.00Z" fill="#000" stroke="#000" stroke-width="3.6" transform="rotate(135 32 32)"/><path d="M32 25.00 A7.88 7.88 0 0 1 32 10.50 A7.88 7.88 0 0 1 32 25.00Z" fill="#000" stroke="#000" stroke-width="3.6" transform="rotate(225 32 32)"/><path d="M32 25.00 A7.88 7.88 0 0 1 32 10.50 A7.88 7.88 0 0 1 32 25.00Z" fill="#000" stroke="#000" stroke-width="3.6" transform="rotate(315 32 32)"/>
   </mask>
-  <rect width="64" height="64" fill="#ffffff" mask="url(#m)"/>
+  <g mask="url(#m)"><path d="M32 26.00 A13.43 13.43 0 0 1 32 2.00 A13.43 13.43 0 0 1 32 26.00Z" fill="#ffffff" transform="rotate(0 32 32)"/><path d="M32 26.00 A13.43 13.43 0 0 1 32 2.00 A13.43 13.43 0 0 1 32 26.00Z" fill="#ffffff" transform="rotate(90 32 32)"/><path d="M32 26.00 A13.43 13.43 0 0 1 32 2.00 A13.43 13.43 0 0 1 32 26.00Z" fill="#ffffff" transform="rotate(180 32 32)"/><path d="M32 26.00 A13.43 13.43 0 0 1 32 2.00 A13.43 13.43 0 0 1 32 26.00Z" fill="#ffffff" transform="rotate(270 32 32)"/></g>
+  <path d="M32 25.00 A7.88 7.88 0 0 1 32 10.50 A7.88 7.88 0 0 1 32 25.00Z" fill="#a9d4c7" transform="rotate(45 32 32)"/><path d="M32 25.00 A7.88 7.88 0 0 1 32 10.50 A7.88 7.88 0 0 1 32 25.00Z" fill="#a9d4c7" transform="rotate(135 32 32)"/><path d="M32 25.00 A7.88 7.88 0 0 1 32 10.50 A7.88 7.88 0 0 1 32 25.00Z" fill="#a9d4c7" transform="rotate(225 32 32)"/><path d="M32 25.00 A7.88 7.88 0 0 1 32 10.50 A7.88 7.88 0 0 1 32 25.00Z" fill="#a9d4c7" transform="rotate(315 32 32)"/>
+  <circle cx="32" cy="32" r="3.2" fill="#ffffff"/>
 </g>
 </svg>

@@ -51,10 +51,11 @@
     <defs>
       <symbol id="i-mark" viewBox="0 0 64 64">
         <mask id="mark-cut" maskUnits="userSpaceOnUse" x="0" y="0" width="64" height="64">
-          <rect x="4" y="4" width="56" height="48" rx="14" fill="#fff"/><path d="M36 50 50 61V44z" fill="#fff"/>
-          <rect x="0" y="24.5" width="64" height="7" fill="#000"/><rect x="23.5" y="0" width="7" height="64" fill="#000"/>
+          <rect width="64" height="64" fill="#fff"/><path d="M32 25.00 A7.88 7.88 0 0 1 32 10.50 A7.88 7.88 0 0 1 32 25.00Z" fill="#000" stroke="#000" stroke-width="3.6" transform="rotate(45 32 32)"/><path d="M32 25.00 A7.88 7.88 0 0 1 32 10.50 A7.88 7.88 0 0 1 32 25.00Z" fill="#000" stroke="#000" stroke-width="3.6" transform="rotate(135 32 32)"/><path d="M32 25.00 A7.88 7.88 0 0 1 32 10.50 A7.88 7.88 0 0 1 32 25.00Z" fill="#000" stroke="#000" stroke-width="3.6" transform="rotate(225 32 32)"/><path d="M32 25.00 A7.88 7.88 0 0 1 32 10.50 A7.88 7.88 0 0 1 32 25.00Z" fill="#000" stroke="#000" stroke-width="3.6" transform="rotate(315 32 32)"/>
         </mask>
-        <rect width="64" height="64" fill="currentColor" stroke="none" mask="url(#mark-cut)"/>
+        <g mask="url(#mark-cut)" stroke="none"><path d="M32 26.00 A13.43 13.43 0 0 1 32 2.00 A13.43 13.43 0 0 1 32 26.00Z" fill="currentColor" transform="rotate(0 32 32)"/><path d="M32 26.00 A13.43 13.43 0 0 1 32 2.00 A13.43 13.43 0 0 1 32 26.00Z" fill="currentColor" transform="rotate(90 32 32)"/><path d="M32 26.00 A13.43 13.43 0 0 1 32 2.00 A13.43 13.43 0 0 1 32 26.00Z" fill="currentColor" transform="rotate(180 32 32)"/><path d="M32 26.00 A13.43 13.43 0 0 1 32 2.00 A13.43 13.43 0 0 1 32 26.00Z" fill="currentColor" transform="rotate(270 32 32)"/></g>
+        <g stroke="none"><path d="M32 25.00 A7.88 7.88 0 0 1 32 10.50 A7.88 7.88 0 0 1 32 25.00Z" fill="var(--mark-accent, currentColor)" transform="rotate(45 32 32)"/><path d="M32 25.00 A7.88 7.88 0 0 1 32 10.50 A7.88 7.88 0 0 1 32 25.00Z" fill="var(--mark-accent, currentColor)" transform="rotate(135 32 32)"/><path d="M32 25.00 A7.88 7.88 0 0 1 32 10.50 A7.88 7.88 0 0 1 32 25.00Z" fill="var(--mark-accent, currentColor)" transform="rotate(225 32 32)"/><path d="M32 25.00 A7.88 7.88 0 0 1 32 10.50 A7.88 7.88 0 0 1 32 25.00Z" fill="var(--mark-accent, currentColor)" transform="rotate(315 32 32)"/></g>
+        <circle cx="32" cy="32" r="3.2" fill="currentColor" stroke="none"/>
       </symbol>
       <symbol id="i-thermo" viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"/><path d="M11.5 9v7"/></symbol>
       <symbol id="i-rash" viewBox="0 0 24 24"><circle cx="7" cy="7.5" r="1.6"/><circle cx="15.5" cy="6" r="1.2"/><circle cx="11.5" cy="12.5" r="2"/><circle cx="17.5" cy="14.5" r="1.4"/><circle cx="6.5" cy="16.5" r="1.3"/><circle cx="12.5" cy="19" r="1"/></symbol>
@@ -113,7 +114,7 @@
     <section class="hero">
       <div class="container hero-grid">
         <div class="hero-copy">
-          <p class="eyebrow"><span data-i18n="hero.eyebrow">A new idea from vaerksted</span></p>
+          <p class="eyebrow"><span data-i18n="hero.eyebrow">A new idea from <a href="https://vaerksted.ai" target="_blank" rel="noopener">vaerksted</a></span></p>
           <h1 data-i18n="hero.title">Feeling poorly? <em>Let's talk.</em></h1>
           <p class="lead" data-i18n="hero.lead">
             Synthetic Practitioner is a friendly AI general practitioner you can chat with, call or see on video,
@@ -475,7 +476,7 @@
           <details><summary data-i18n="faq.4t">Do I need video for it to work?</summary><p data-i18n="faq.4">Not at all. Chat works everywhere, voice is great when your hands are full, and video is there when showing is easier than explaining.</p></details>
           <details><summary data-i18n="faq.5t">When will it launch?</summary><p data-i18n="faq.5">We're still building it. We'll open to waitlist members in small groups once the service has passed the required medical device and safety approvals, and we'll email you before that happens.</p></details>
           <details><summary data-i18n="faq.6t">What will it cost?</summary><p data-i18n="faq.6">Pricing isn't set yet. Our aim is for talking to the AI practitioner to cost much less than a private online consultation, with a clear price for any handover to a human doctor.</p></details>
-          <details><summary data-i18n="faq.7t">Who's behind it?</summary><p data-i18n="faq.7">Synthetic Practitioner is being built by vaerksted.</p></details>
+          <details><summary data-i18n="faq.7t">Who's behind it?</summary><p data-i18n="faq.7">Synthetic Practitioner is being built by <a href="https://vaerksted.ai" target="_blank" rel="noopener">vaerksted</a>.</p></details>
         </div>
       </div>
     </section>
@@ -543,7 +544,7 @@
           </div>
           <div class="field consent">
             <input id="consent" name="consent" type="checkbox" required aria-describedby="consent-error">
-            <label for="consent" data-i18n="wl.consent">I agree that vaerksted may store my details to contact me about Synthetic Practitioner. I can withdraw my consent at any time.</label>
+            <label for="consent" data-i18n="wl.consent">I agree that <a href="https://vaerksted.ai" target="_blank" rel="noopener">vaerksted</a> may store my details to contact me about Synthetic Practitioner. I can withdraw my consent at any time.</label>
           </div>
           <span class="error" id="consent-error" role="alert"></span>
           <button type="submit" class="btn btn-full" data-i18n="wl.submit">Join the waitlist</button>
@@ -563,13 +564,13 @@
     <div class="container footer-inner">
       <div>
         <picture><source srcset="/brand/logo-white.svg" media="(prefers-color-scheme: dark)"><img class="footer-logo" src="/brand/logo.svg" alt="Synthetic Practitioner" width="198" height="34"></picture>
-        <div data-i18n="footer.by"><strong>Synthetic Practitioner</strong> · an idea by vaerksted</div>
+        <div data-i18n="footer.by"><strong>Synthetic Practitioner</strong> · an idea by <a href="https://vaerksted.ai" target="_blank" rel="noopener">vaerksted</a></div>
       </div>
       <p class="disclaimer" data-i18n="footer.disclaimer">
         Synthetic Practitioner is in development and not yet available. It isn't a medical device on the market, doesn't give medical
         advice today and doesn't replace a doctor. Examples on this page are illustrations. In an emergency, call 112.
       </p>
-      <p class="copy">© <span id="year">2026</span> vaerksted</p>
+      <p class="copy">© <span id="year">2026</span> <a href="https://vaerksted.ai" target="_blank" rel="noopener">vaerksted</a></p>
     </div>
   </footer>
 
