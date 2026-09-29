@@ -3,20 +3,21 @@ Website for Synthetic Practitioner
 
 Pre-launch landing page for Synthetic Practitioner, vaerksted's AI general practitioner concept. It includes an interactive chat / voice call / video call preview, a photo-feedback demo (AI markings overlaid on example skin photos, with a draggable glass test), a section on common problems for families with small children, the Danish legal limits on what an AI practitioner may do, an FAQ and a working waitlist. The page is available in Danish and English.
 
-Hosted on **Cloudflare Pages**: the static site is in `public/`, and the waitlist API is a Pages Function backed by a **D1** database.
+Hosted on **Cloudflare Workers**: the static site in `public/` is served as Workers static assets, and a small Worker (`src/`) handles the waitlist API, backed by a **D1** database.
 
 ## Structure
 
 ```
-public/                     static site (Pages build output, no build step)
+public/                     static site (served as-is, no build step)
   index.html                page content, English text inline
   i18n.js                   Danish translations + language switching
   script.js                 hero tabs, photo-feedback demo, waitlist form
   styles.css                styles (light and dark mode, responsive)
   _headers                  security headers for static files
-functions/api/waitlist.js   POST /api/waitlist → D1
+src/index.js                Worker entry: routes /api/waitlist, serves everything else from public/
+src/waitlist.js             POST /api/waitlist → D1
 migrations/                 D1 schema
-wrangler.toml               Pages + D1 config
+wrangler.toml               Worker, static assets and D1 config
 ```
 
 The example skin photos are illustrations drawn in SVG (no real patient images). Their geometry is in the `CASES` array in `script.js`, and their text is under `case.<id>.*` in `i18n.js`.
@@ -36,21 +37,19 @@ When you add or change text, add the `data-i18n` key in the HTML and the Danish 
 ```sh
 npm install
 npm run db:migrate:local   # create the local D1 database
-npm run dev                # http://localhost:8788, site + API
+npm run dev                # http://localhost:8787, site + API
 ```
 
 ## Deploying to Cloudflare
 
-One-time setup:
+The Worker `sp-website` is connected to this repository with Workers Builds:
 
-1. `npx wrangler login`
-2. The D1 database `sp-waitlist` already exists and its id is in `wrangler.toml`. (To create it again elsewhere: `npx wrangler d1 create sp-waitlist --jurisdiction eu`, then update the id.)
-3. `npm run db:migrate` to create the table in the remote database.
-4. Create the Pages project, either:
-   - **Git integration** (recommended): in the Cloudflare dashboard, go to Workers & Pages → Create → Pages → connect this repository. Build command: *none*; build output directory: `public`. Cloudflare reads the D1 binding from `wrangler.toml`. If it doesn't, add it under Settings → Bindings → D1 database, with database `sp-waitlist` and variable name `DB` (`sp_waitlist` also works).
-   - **Direct upload**: `npm run deploy`
+- Root directory: `/` (not `public`, since the Worker code and `wrangler.toml` live at the root)
+- Build command: none
+- Deploy command: `npx wrangler deploy`
+- Branch: `main`. Every push to `main` deploys; other branches get preview URLs.
 
-After that, every push to the production branch deploys automatically (with Git integration), and other branches get preview URLs.
+The D1 database `sp-waitlist` already exists; its id and the `DB` binding are in `wrangler.toml`, so no dashboard binding is needed. Apply new migrations with `npm run db:migrate`. To deploy by hand instead: `npx wrangler login`, then `npm run deploy`.
 
 ## Waitlist
 
@@ -58,7 +57,7 @@ The form posts JSON to `/api/waitlist`. The function:
 
 - validates email, consent, and allowed values for region, household and interests
 - stores the email lowercased, one row per email; signing up again updates the row without erasing earlier answers
-- records the page language, `consent_version` and `consent_at`. Bump `CONSENT_VERSION` in `functions/api/waitlist.js` whenever the consent wording changes.
+- records the page language, `consent_version` and `consent_at`. Bump `CONSENT_VERSION` in `src/waitlist.js` whenever the consent wording changes.
 - drops bot submissions via a hidden honeypot field, rejects cross-origin posts, and never reveals whether an email is already on the list
 - stores no IP address or user agent
 

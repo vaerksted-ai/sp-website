@@ -1,7 +1,11 @@
-# Cloudflare Pages project: static site in ./public, Pages Functions in ./functions.
-name = "synthetic-practitioner"
-pages_build_output_dir = "./public"
+# Cloudflare Worker: serves the static site in ./public and the waitlist API.
+name = "sp-website"
+main = "src/index.js"
 compatibility_date = "2025-09-01"
+
+[assets]
+directory = "./public"
+binding = "ASSETS"
 
 [[d1_databases]]
 binding = "DB"

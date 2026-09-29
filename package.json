@@ -1,14 +1,14 @@
 {
   "name": "sp-website",
   "private": true,
-  "description": "Landing page and waitlist for Synthetic Practitioner (Cloudflare Pages + D1)",
+  "description": "Landing page and waitlist for Synthetic Practitioner (Cloudflare Workers + D1)",
   "scripts": {
-    "dev": "wrangler pages dev",
+    "dev": "wrangler dev",
     "db:migrate:local": "wrangler d1 migrations apply sp-waitlist --local",
     "db:migrate": "wrangler d1 migrations apply sp-waitlist --remote",
     "waitlist:count": "wrangler d1 execute sp-waitlist --remote --command \"SELECT COUNT(*) AS signups FROM waitlist\"",
     "waitlist:export": "wrangler d1 execute sp-waitlist --remote --json --command \"SELECT email, name, region, household, interests, lang, consent_version, consent_at, created_at FROM waitlist ORDER BY created_at\"",
-    "deploy": "wrangler pages deploy"
+    "deploy": "wrangler deploy"
   },
   "devDependencies": {
     "wrangler": "^4.143.0"

@@ -1,4 +1,4 @@
-// POST /api/waitlist — store a waitlist signup in D1 (binding: DB).
+// POST /api/waitlist: store a waitlist signup in D1 (binding: DB).
 //
 // Signing up again with the same email updates the existing row (fields left
 // empty keep their earlier value) instead of failing, and the response never
@@ -15,7 +15,7 @@ const HOUSEHOLDS = new Set(['me', 'young-children', 'children', 'family']);
 const INTERESTS = new Set(['chat', 'voice', 'video', 'photos', 'children', 'chronic']);
 const LANGS = new Set(['en', 'da']);
 
-function json(body, status = 200) {
+export function json(body, status = 200) {
   return new Response(JSON.stringify(body), {
     status,
     headers: { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' },
@@ -26,7 +26,7 @@ function pick(value, allowed) {
   return typeof value === 'string' && allowed.has(value) ? value : null;
 }
 
-export async function onRequestPost({ request, env }) {
+export async function handleWaitlist(request, env) {
   // Only accept submissions from our own pages.
   const origin = request.headers.get('Origin');
   if (origin && origin !== new URL(request.url).origin) {
@@ -98,8 +98,4 @@ export async function onRequestPost({ request, env }) {
   }
 
   return json({ ok: true });
-}
-
-export function onRequest() {
-  return json({ ok: false, error: 'method_not_allowed' }, 405);
 }
