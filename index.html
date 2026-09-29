@@ -1,0 +1,411 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Synthetic Practitioner — an AI general practitioner for Denmark</title>
+  <meta name="description" content="Synthetic Practitioner is an AI general practitioner from vaerksted, built on the experience of hejdoktor.dk. Join the waitlist for early access in Denmark.">
+  <meta property="og:title" content="Synthetic Practitioner — an AI general practitioner for Denmark">
+  <meta property="og:description" content="Talk to an AI doctor any time, day or night. Join the waitlist for early access.">
+  <meta name="theme-color" content="#0f3d3a">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230f3d3a'/%3E%3Cpath d='M13 8h6v5h5v6h-5v5h-6v-5H8v-6h5z' fill='%23e8f5ef'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="emergency-bar" role="note">
+    <strong>Emergency?</strong> Call <a href="tel:112">112</a>. Urgent but not life-threatening: call your regional out-of-hours service (in the Capital Region <a href="tel:1813">1813</a>). Synthetic Practitioner is not an emergency service.
+  </div>
+
+  <header class="nav">
+    <div class="container nav-inner">
+      <a href="#top" class="logo" aria-label="Synthetic Practitioner home">
+        <span class="logo-mark" aria-hidden="true">
+          <svg viewBox="0 0 32 32" width="28" height="28"><rect width="32" height="32" rx="8" fill="currentColor"/><path d="M13 8h6v5h5v6h-5v5h-6v-5H8v-6h5z" fill="var(--bg)"/></svg>
+        </span>
+        <span>Synthetic Practitioner</span>
+      </a>
+      <nav aria-label="Main">
+        <ul class="nav-links">
+          <li><a href="#use-cases">What it does</a></li>
+          <li><a href="#how">How it works</a></li>
+          <li><a href="#legal">Legal limits</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </nav>
+      <a href="#waitlist" class="btn btn-small">Join waitlist</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">A new concept from vaerksted · Built on the experience of hejdoktor.dk</p>
+          <h1>Your general practitioner, <em>now synthetic.</em></h1>
+          <p class="lead">
+            Synthetic Practitioner is an AI doctor you can talk to any time, day or night, in Danish or English.
+            It listens, asks the right follow-up questions, explains what may be going on, and tells you clearly
+            what to do next. When you need something only a licensed doctor can do, it hands you over to one.
+          </p>
+          <ul class="hero-points">
+            <li>No waiting room, no phone queue at 08:00</li>
+            <li>Answers in minutes, 24/7</li>
+            <li>Built for Danish healthcare, laws and GDPR</li>
+          </ul>
+          <a href="#waitlist" class="btn">Get early access</a>
+          <p class="fineprint">Pre-launch. Nothing is live yet. Joining the waitlist is free and doesn't commit you to anything.</p>
+        </div>
+
+        <div class="hero-visual" aria-hidden="true">
+          <div class="chat">
+            <div class="chat-head">
+              <span class="status-dot"></span>
+              <div>
+                <strong>Synthetic Practitioner</strong>
+                <span>AI general practitioner · online</span>
+              </div>
+            </div>
+            <div class="chat-body">
+              <div class="msg user">I've had a sore throat and fever for three days. Should I see a doctor?</div>
+              <div class="msg ai">I'm sorry you're feeling unwell. A few questions first: do you find it hard to swallow or breathe, and have you noticed white patches on your tonsils?</div>
+              <div class="msg user">Swallowing hurts, but breathing is fine. Yes, there are some white spots.</div>
+              <div class="msg ai">
+                That could be a bacterial throat infection, which may need a strep test and possibly antibiotics.
+                <span class="handoff">→ I can book you with a licensed doctor today, who can test and prescribe if needed.</span>
+              </div>
+              <div class="typing"><span></span><span></span><span></span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TRUST STRIP -->
+    <section class="strip">
+      <div class="container strip-inner">
+        <div><strong>24/7</strong><span>always available</span></div>
+        <div><strong>DA / EN</strong><span>speaks your language</span></div>
+        <div><strong>EU-hosted</strong><span>health data stays in the EU</span></div>
+        <div><strong>Human handoff</strong><span>licensed doctors when it matters</span></div>
+      </div>
+    </section>
+
+    <!-- USE CASES -->
+    <section id="use-cases" class="section">
+      <div class="container">
+        <p class="eyebrow">What it does</p>
+        <h2>The everyday questions you'd bring to your GP</h2>
+        <p class="section-lead">
+          Most visits to a general practitioner are about common, manageable problems. Synthetic Practitioner is built
+          to handle that first conversation well, and to know when it isn't enough.
+        </p>
+
+        <div class="cards">
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">🩺</div>
+            <h3>Symptom assessment &amp; triage</h3>
+            <p>Describe what's wrong in your own words. It asks structured follow-up questions and tells you how urgent it is: self-care, see a doctor this week, call the out-of-hours service now, or call 112.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">🤧</div>
+            <h3>Common, minor illnesses</h3>
+            <p>Colds, flu, sore throat, cough, earache, stomach bugs, urinary discomfort, rashes, allergies. Clear advice on self-care, over-the-counter options and warning signs to watch for.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">📋</div>
+            <h3>Understanding test results</h3>
+            <p>Got lab results on sundhed.dk or a letter from the hospital you don't understand? It explains the terms and numbers in plain language and suggests what to ask your doctor.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">💊</div>
+            <h3>Medication questions</h3>
+            <p>How and when to take a medicine, common side effects, interactions with other drugs or alcohol, and what to do if you missed a dose. General information, not a new prescription.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">📈</div>
+            <h3>Living with a chronic condition</h3>
+            <p>Support between check-ups for conditions like type 2 diabetes, high blood pressure, asthma and COPD: logging readings, spotting trends and knowing when to contact your own doctor.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">🧠</div>
+            <h3>Mental wellbeing</h3>
+            <p>A calm place to talk about stress, sleep problems, low mood or anxiety, with evidence-based self-help, and a direct route to professional help and crisis lines when needed.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">👶</div>
+            <h3>Children &amp; family</h3>
+            <p>Fever in a toddler at 02:00, rashes, vaccination programme questions, normal development. Helps parents decide whether it can wait until morning.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">✈️</div>
+            <h3>Prevention &amp; travel</h3>
+            <p>Healthy lifestyle advice, screening programmes you're eligible for, and what to think about before travelling, including which vaccinations to discuss with a clinic.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">📝</div>
+            <h3>Prepare for your real appointment</h3>
+            <p>Get a clear, structured summary of your symptoms and history to share with your own GP or a hejdoktor.dk doctor, so the consultation starts where it matters.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section id="how" class="section section-alt">
+      <div class="container">
+        <p class="eyebrow">How it works</p>
+        <h2>A consultation in four steps</h2>
+        <ol class="steps">
+          <li>
+            <span class="step-num">1</span>
+            <h3>Sign in securely</h3>
+            <p>Log in with MitID so we know who you are and can keep your conversation history safe and private.</p>
+          </li>
+          <li>
+            <span class="step-num">2</span>
+            <h3>Talk it through</h3>
+            <p>Chat or speak with the AI practitioner. It asks the questions a good GP would, and never rushes you.</p>
+          </li>
+          <li>
+            <span class="step-num">3</span>
+            <h3>Get a clear plan</h3>
+            <p>You get an explanation of what's likely going on, how urgent it is, and concrete next steps in writing.</p>
+          </li>
+          <li>
+            <span class="step-num">4</span>
+            <h3>Hand off when needed</h3>
+            <p>If you need a prescription, a sick note, a referral or an examination, you're passed to a licensed doctor with your summary attached.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- HEJDOKTOR -->
+    <section class="section">
+      <div class="container heritage">
+        <div>
+          <p class="eyebrow">Our foundation</p>
+          <h2>Built on what works at hejdoktor.dk</h2>
+        </div>
+        <div>
+          <p>
+            hejdoktor.dk showed that people in the Nordics are ready to see a doctor online: fast, convenient,
+            and without taking half a day off work. Synthetic Practitioner takes the next step: an AI practitioner that
+            handles the first conversation on its own, with hejdoktor's network of licensed doctors behind it for
+            everything that needs a human.
+          </p>
+          <p>
+            The result: shorter waits for patients, and doctors who spend their time on the cases that actually need them.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- LEGAL -->
+    <section id="legal" class="section section-alt">
+      <div class="container">
+        <p class="eyebrow">Legal limits in Denmark</p>
+        <h2>What an AI doctor is <em>not</em> allowed to do</h2>
+        <p class="section-lead">
+          Healthcare in Denmark is tightly regulated, and for good reason. We think you should know exactly where the
+          line is. These are the things Synthetic Practitioner will not do on its own. When you need one of them, a
+          licensed doctor takes over.
+        </p>
+
+        <div class="limits">
+          <div class="limit">
+            <h3>✕ Prescribe medicine</h3>
+            <p>Only authorised doctors (and, within their fields, dentists and a few other professions) may issue prescriptions (<em>recepter</em>). The AI can explain medicines but cannot prescribe, renew or change them.</p>
+          </div>
+          <div class="limit">
+            <h3>✕ Call itself a doctor</h3>
+            <p>"Læge" is a protected title under the Authorisation Act. Only people authorised by the Danish Patient Safety Authority may use it. Our AI is always clearly identified as an AI, never as a human physician.</p>
+          </div>
+          <div class="limit">
+            <h3>✕ Issue sick notes or medical certificates</h3>
+            <p>Medical certificates (<em>lægeerklæringer</em>) for employers, insurers, municipalities or driving licences must be issued and signed by a doctor who takes professional responsibility.</p>
+          </div>
+          <div class="limit">
+            <h3>✕ Make referrals</h3>
+            <p>Referrals (<em>henvisninger</em>) to specialists, hospitals, physiotherapy or psychologists with public subsidy must come from a doctor. The AI can tell you when a referral is likely needed.</p>
+          </div>
+          <div class="limit">
+            <h3>✕ Give a final diagnosis or treatment</h3>
+            <p>It gives an assessment of what is likely and how urgent it is, not a binding diagnosis. Treating illness is reserved for authorised health professionals, and acting as if unauthorised can be treated as quackery (<em>kvaksalveri</em>).</p>
+          </div>
+          <div class="limit">
+            <h3>✕ Replace your own GP</h3>
+            <p>Your assigned GP (<em>egen læge</em>) under the public health insurance scheme stays your GP. Synthetic Practitioner sits alongside the public system and does not replace it.</p>
+          </div>
+          <div class="limit">
+            <h3>✕ Handle emergencies</h3>
+            <p>It is not an emergency service. If it detects signs of something serious, such as chest pain, stroke symptoms or suicidal thoughts, it stops and tells you to call 112 or the relevant crisis line.</p>
+          </div>
+          <div class="limit">
+            <h3>✕ Examine you physically</h3>
+            <p>No blood tests, swabs, vaccinations, listening to your lungs or feeling your stomach. Anything that requires hands-on examination goes to a clinic.</p>
+          </div>
+        </div>
+
+        <h3 class="subhead">The rules we build under</h3>
+        <div class="accordion">
+          <details>
+            <summary>Authorisation Act (<em>Autorisationsloven</em>)</summary>
+            <p>Defines who may practise as a doctor, protects the title "læge", reserves certain activities for doctors and prohibits unauthorised treatment that puts people at risk. It is the main reason the AI assesses and advises, while a licensed doctor makes clinical decisions.</p>
+          </details>
+          <details>
+            <summary>Health Act (<em>Sundhedsloven</em>)</summary>
+            <p>Sets out patients' rights: informed consent, confidentiality and access to your own health records. Consultations handled by our doctors are recorded in a patient record under the Danish record-keeping rules (<em>journalføringspligt</em>).</p>
+          </details>
+          <details>
+            <summary>Medicines Act &amp; prescription rules (<em>Lægemiddelloven</em>)</summary>
+            <p>Only authorised prescribers may prescribe medicines, and prescriptions are sent electronically through the national prescription system. The AI has no access to issue prescriptions.</p>
+          </details>
+          <details>
+            <summary>EU Medical Device Regulation (MDR 2017/745)</summary>
+            <p>Software that helps assess or triage symptoms is generally a medical device and must be CE-marked before it can be put on the market in the EU. The Danish Medicines Agency (<em>Lægemiddelstyrelsen</em>) supervises medical devices in Denmark. Synthetic Practitioner will not launch before the required conformity assessment is complete.</p>
+          </details>
+          <details>
+            <summary>EU AI Act</summary>
+            <p>AI systems that are, or are part of, regulated medical devices are classified as high-risk. That brings requirements for risk management, data quality, human oversight, transparency and logging. You will always be told that you're talking to an AI.</p>
+          </details>
+          <details>
+            <summary>GDPR &amp; the Danish Data Protection Act</summary>
+            <p>Health data is a special category of personal data (GDPR Art. 9). We only process it with a valid legal basis, keep it within the EU, encrypt it, and never sell it or use it for advertising. You can see, export and delete your data.</p>
+          </details>
+          <details>
+            <summary>Supervision by the Danish Patient Safety Authority</summary>
+            <p>The doctors behind the service are supervised by <em>Styrelsen for Patientsikkerhed</em>, and online health services must be registered as healthcare providers (<em>behandlingssteder</em>). Adverse events are reported and handled like in any other Danish clinic.</p>
+          </details>
+          <details>
+            <summary>Marketing of health services</summary>
+            <p>Danish rules require marketing of health services to be accurate and not misleading. That is why this page says clearly what the AI cannot do, and why we make no promises about outcomes.</p>
+          </details>
+        </div>
+        <p class="fineprint">This is a summary of the regulatory framework for information purposes and is not legal advice. The final service design is subject to review by legal counsel and the relevant Danish authorities.</p>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="section">
+      <div class="container narrow">
+        <p class="eyebrow">FAQ</p>
+        <h2>Questions we get a lot</h2>
+        <div class="accordion">
+          <details>
+            <summary>Is this a real doctor?</summary>
+            <p>No. Synthetic Practitioner is an AI. It's trained to hold a medical conversation the way a good general practitioner would, but it is not a licensed doctor. When a licensed doctor is needed, you are handed over to a human, and it's always clear which one you're talking to.</p>
+          </details>
+          <details>
+            <summary>When will it launch?</summary>
+            <p>We are pre-product. We'll open to waitlist members in small groups once the service has passed the required medical device and safety approvals. We'll email you before that happens.</p>
+          </details>
+          <details>
+            <summary>What will it cost?</summary>
+            <p>Pricing isn't set yet. Our aim is that talking to the AI practitioner is significantly cheaper than a private online consultation, with a transparent price for any handoff to a human doctor.</p>
+          </details>
+          <details>
+            <summary>Does it work with the public health system?</summary>
+            <p>It works alongside it. Your own GP stays your GP. You can take the written summary to any doctor, and we will work towards letting you share it through official channels.</p>
+          </details>
+          <details>
+            <summary>What happens to my data?</summary>
+            <p>Your health data is encrypted, stored in the EU and processed under GDPR. It is never sold or used for advertising. For the waitlist, we only store the details you enter in the form below.</p>
+          </details>
+          <details>
+            <summary>Who is behind it?</summary>
+            <p>Synthetic Practitioner is developed by vaerksted, building on the clinical and operational experience of hejdoktor.dk.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- WAITLIST -->
+    <section id="waitlist" class="section waitlist">
+      <div class="container waitlist-grid">
+        <div>
+          <p class="eyebrow">Early access</p>
+          <h2>Be one of the first to try it</h2>
+          <p>
+            Join the waitlist and we'll invite you as soon as we open. Early members help shape the product:
+            what it should handle, how it should talk, and where the line to a human doctor should be.
+          </p>
+          <ul class="checklist">
+            <li>Early access before public launch</li>
+            <li>Occasional product updates, no spam</li>
+            <li>Leave the list whenever you like</li>
+          </ul>
+        </div>
+
+        <form id="waitlist-form" class="form" novalidate data-endpoint="">
+          <div class="field">
+            <label for="name">Name <span class="optional">(optional)</span></label>
+            <input id="name" name="name" type="text" autocomplete="name">
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" autocomplete="email" required>
+            <span class="error" id="email-error" role="alert"></span>
+          </div>
+          <div class="field">
+            <label for="region">Where do you live?</label>
+            <select id="region" name="region">
+              <option value="">Choose region</option>
+              <option>Capital Region (Hovedstaden)</option>
+              <option>Zealand (Sjælland)</option>
+              <option>Southern Denmark (Syddanmark)</option>
+              <option>Central Denmark (Midtjylland)</option>
+              <option>North Denmark (Nordjylland)</option>
+              <option>Outside Denmark</option>
+            </select>
+          </div>
+          <fieldset class="field">
+            <legend>What would you use it for? <span class="optional">(optional)</span></legend>
+            <div class="chips">
+              <label class="chip"><input type="checkbox" name="interests" value="minor-illness"><span>Minor illness</span></label>
+              <label class="chip"><input type="checkbox" name="interests" value="children"><span>My children</span></label>
+              <label class="chip"><input type="checkbox" name="interests" value="chronic"><span>Chronic condition</span></label>
+              <label class="chip"><input type="checkbox" name="interests" value="mental"><span>Mental wellbeing</span></label>
+              <label class="chip"><input type="checkbox" name="interests" value="results"><span>Test results</span></label>
+              <label class="chip"><input type="checkbox" name="interests" value="medication"><span>Medication</span></label>
+            </div>
+          </fieldset>
+          <div class="field consent">
+            <input id="consent" name="consent" type="checkbox" required>
+            <label for="consent">I agree that vaerksted may store my details to contact me about Synthetic Practitioner. I can withdraw my consent at any time.</label>
+          </div>
+          <span class="error" id="consent-error" role="alert"></span>
+          <button type="submit" class="btn btn-full">Join the waitlist</button>
+          <p class="form-note">Please don't share any health information in this form.</p>
+        </form>
+
+        <div id="waitlist-success" class="success" hidden tabindex="-1">
+          <div class="success-icon" aria-hidden="true">✓</div>
+          <h3>You're on the list</h3>
+          <p>Thank you. We'll email you as soon as early access opens.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>
+        <strong>Synthetic Practitioner</strong> · a concept by vaerksted<br>
+        <span>Built on the experience of hejdoktor.dk</span>
+      </div>
+      <p class="disclaimer">
+        Synthetic Practitioner is in development and not yet available. It is not a medical device on the market, provides no
+        medical advice today, and does not replace a doctor. In an emergency, call 112.
+      </p>
+      <p class="copy">© <span id="year">2026</span> vaerksted</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
