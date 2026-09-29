@@ -23,12 +23,13 @@ The example skin photos are illustrations drawn in SVG (no real patient images).
 
 ## Brand
 
-Old Norse meets AI, in the [Værksted](https://vaerksted.ai) family. Documented at `/brand/` (`public/brand/index.html`, not indexed).
+Documented at `/brand/` (`public/brand/index.html`, not indexed).
 
-- **Seal:** a gold-rimmed medallion like the Værksted seal, with "Synthetic Practitioner" in Elder Futhark around the rim and a healing Selbu rose (its four long petals form a medical plus) in an aurora gradient, on a scrubs-green cosmos. `seal-simple.svg` drops the rune ring for small sizes (favicon, nav).
-- **Type:** Space Grotesk (headings, body, wordmark), JetBrains Mono (labels), Noto Sans Runic (runes), as on vaerksted.ai.
-- **Site:** stays light and scrubs green for trust; the seal, aurora label lines and the cosmos waitlist section carry the Værksted accents.
-- `scripts/build-brand.py` regenerates every SVG in `public/brand/` (`pip install fonttools uharfbuzz`; fonts are fetched from the Google Fonts repo). The PNGs (icons, `seal.png`, `og-image*.png`) are rendered from those SVGs in a headless browser.
+- **Mark:** a Selbu rose (the eight-petal star of Scandinavian knitwear) charted stitch by stitch on a 13 × 13 grid, so it reads as both a knitting chart and pixels. The four long petals join into a medical plus in scrubs green; the diagonal petals are washed scrubs; a single mint stitch at the heart is the AI.
+- **Type:** Albert Sans (headings, body, lowercase wordmark) and Geist Mono (labels).
+- **Colour:** scrubs green `#1E6B5C`, washed scrubs `#7FB5A6`, mint `#3FD3A4` (small accents only), forest `#0E3B33` for dark sections.
+- **Motif:** the stitch grid: faint stitch dots on dark sections and three stitches before each label.
+- `scripts/build-brand.py` regenerates every SVG in `public/brand/` (`pip install fonttools uharfbuzz`; fonts are fetched from the Google Fonts repo). The PNGs (icons, `og-image*.png`) are rendered from those SVGs in a headless browser.
 - `og:image` is a relative URL. Once the domain is known, make it absolute in `index.html`.
 
 ## Languages

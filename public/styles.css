@@ -1,5 +1,5 @@
-/* Brand: scrubs green on clean white for trust, with the Værksted family's
-   Old Norse / sci-fi accents (gold seal, runes, aurora, cosmos). See /brand/. */
+/* Brand: scrubs green on clean white. The mark is a Selbu rose charted in stitches,
+   so a knitting grid (squares, 'stitch' dots) is the recurring motif. See /brand/. */
 :root {
   --bg: #ffffff;
   --surface: #ffffff;
@@ -17,11 +17,10 @@
   --focus: #2f8f7a;
   --radius: 16px;
   --shadow: 0 1px 2px rgba(16, 33, 29, .05), 0 12px 32px rgba(16, 33, 29, .08);
-  --sans: "Space Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
-  --gold: #E8C879;
-  --aurora: linear-gradient(90deg, #4FD08A, #38C5E0, #5B8DEF);
-  --void: #07080D;
+  --sans: "Albert Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "Geist Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --mint: #3fd3a4;
+  --forest: #0e3b33;
   color-scheme: light;
 }
 
@@ -58,7 +57,7 @@ body {
 img, svg { display: block; }
 a { color: var(--brand); }
 h1, h2, h3, h4 { line-height: 1.15; margin: 0 0 .5em; }
-h1, h2 { font-weight: 600; letter-spacing: -.03em; line-height: 1.06; }
+h1, h2 { font-weight: 600; letter-spacing: -.025em; line-height: 1.06; }
 h1 { font-size: clamp(2.4rem, 5vw, 3.8rem); }
 h2 { font-size: clamp(1.8rem, 3.5vw, 2.6rem); }
 h1 em, h2 em { color: var(--brand); font-style: normal; }
@@ -73,7 +72,8 @@ p { margin: 0 0 1em; }
 
 .eyebrow { display: flex; align-items: center; gap: 12px; font: 500 .76rem var(--mono); text-transform: uppercase; letter-spacing: .14em; color: var(--brand); margin-bottom: 1.1em; }
 .eyebrow a { color: inherit; text-underline-offset: 3px; }
-.eyebrow::before { content: ""; width: 28px; height: 2px; border-radius: 1px; background: var(--aurora); flex-shrink: 0; }
+/* Three stitches, echoing the mark */
+.eyebrow::before { content: ""; width: 22px; height: 6px; flex-shrink: 0; background: radial-gradient(circle, var(--mint) 0 2.4px, transparent 2.6px) 0 0 / 8px 6px repeat-x; }
 .lead { font-size: 1.12rem; color: var(--ink-soft); max-width: 36em; }
 .section-lead { color: var(--ink-soft); max-width: 44em; font-size: 1.05rem; margin-bottom: 2.5rem; }
 .fineprint { font-size: .85rem; color: var(--ink-soft); margin-top: 1rem; }
@@ -105,7 +105,7 @@ p { margin: 0 0 1em; }
 }
 .nav-inner { display: flex; align-items: center; justify-content: space-between; gap: 1rem; height: 64px; }
 .logo { display: flex; align-items: center; gap: 10px; font-weight: 600; font-size: 1.1rem; letter-spacing: -.01em; color: var(--ink); text-decoration: none; line-height: 1.2; white-space: nowrap; }
-.logo-mark { width: 36px; height: 36px; flex-shrink: 0; }
+.logo-mark { display: block; width: 34px; height: 34px; flex-shrink: 0; }
 .nav-links { list-style: none; display: flex; gap: 1.4rem; margin: 0; padding: 0; }
 .nav-links a { color: var(--ink-soft); text-decoration: none; font-size: .93rem; white-space: nowrap; }
 .nav-links a:hover { color: var(--ink); }
@@ -223,8 +223,8 @@ p { margin: 0 0 1em; }
   box-shadow: 0 8px 24px rgba(0, 0, 0, .3); border: 1px solid rgba(255, 255, 255, .15);
 }
 .ai-presence { position: relative; width: 58px; height: 58px; margin: 0 auto 8px; display: grid; place-items: center; }
-.ai-core { width: 48px; height: 48px; display: grid; place-items: center; position: relative; }
-.ai-core img { width: 48px; height: 48px; }
+.ai-core { width: 44px; height: 44px; display: grid; place-items: center; position: relative; }
+.ai-core img { width: 40px; height: 40px; }
 .pulse { position: absolute; inset: 7px; border-radius: 14px; border: 2px solid rgba(255, 255, 255, .5); opacity: 0; animation: ripple 2.4s infinite; }
 .pulse:nth-child(2) { animation-delay: 1.2s; }
 .ai-bars { display: flex; gap: 3px; height: 14px; justify-content: center; align-items: center; margin-bottom: 6px; }
@@ -363,18 +363,18 @@ details[open] > summary::after { transform: translateY(-50%) rotate(45deg); }
 
 /* Waitlist */
 .waitlist {
-  background: url(/brand/stars.svg) center / cover, radial-gradient(120% 90% at 30% -20%, #153d34, #0c1d19 45%, var(--void) 80%);
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E%3Crect x='6.5' y='6.5' width='3' height='3' rx='.6' fill='%23fff' fill-opacity='.07'/%3E%3C/svg%3E"), linear-gradient(135deg, #15493f, var(--forest));
   color: #e3f0ec;
 }
-.waitlist .eyebrow { color: var(--gold); }
+.waitlist .eyebrow { color: #9fe3cc; }
 .waitlist h2 { color: #fff; }
 .waitlist p { color: #c5ddd6; }
 .waitlist-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
 .checklist { list-style: none; padding: 0; }
-.waitlist-seal { display: block; width: 220px; height: auto; margin-top: 40px; filter: drop-shadow(0 20px 40px rgba(0, 0, 0, .45)); }
-@media (max-width: 960px) { .waitlist-seal { display: none; } }
+.waitlist-mark { display: block; width: 160px; height: auto; margin-top: 44px; opacity: .9; }
+@media (max-width: 960px) { .waitlist-mark { display: none; } }
 .checklist li { padding-left: 1.6em; position: relative; margin-bottom: .4em; }
-.checklist li::before { content: "✓"; position: absolute; left: 0; color: #4FD08A; font-weight: 700; }
+.checklist li::before { content: "✓"; position: absolute; left: 0; color: var(--mint); font-weight: 700; }
 
 .form, .success { background: var(--surface); color: var(--ink); border-radius: 20px; padding: 32px; box-shadow: var(--shadow); }
 .field { margin-bottom: 18px; border: 0; padding: 0; min-width: 0; }
