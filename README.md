@@ -23,13 +23,13 @@ The example skin photos are illustrations drawn in SVG (no real patient images).
 
 ## Brand
 
-Logo, icons, colours and type are documented at `/brand/` (`public/brand/index.html`, not indexed by search engines).
+Old Norse meets AI, in the [Værksted](https://vaerksted.ai) family. Documented at `/brand/` (`public/brand/index.html`, not indexed).
 
-- **Mark:** the Selbu rose, the eight-petal star of Scandinavian knitwear, drawn as a healing flower whose four long petals form a medical plus. Two-tone in colour, one colour on white/black.
-- **Type:** Albert Sans (Google Fonts). The wordmark is lowercase Albert Sans SemiBold, outlined in the SVGs.
-- **Files:** `public/brand/` holds the logo SVGs (colour, white, one-colour, stacked), app icons, favicon and social images (`og-image.png` EN, `og-image-da.png` DA).
-- `scripts/build-brand.py` regenerates the logo SVGs. The PNGs were rendered from those SVGs in a headless browser.
-- `og:image` is a relative URL. Once the domain is known, change it to an absolute URL in `index.html` so every social network picks it up.
+- **Seal:** a gold-rimmed medallion like the Værksted seal, with "Synthetic Practitioner" in Elder Futhark around the rim and a healing Selbu rose (its four long petals form a medical plus) in an aurora gradient, on a scrubs-green cosmos. `seal-simple.svg` drops the rune ring for small sizes (favicon, nav).
+- **Type:** Space Grotesk (headings, body, wordmark), JetBrains Mono (labels), Noto Sans Runic (runes), as on vaerksted.ai.
+- **Site:** stays light and scrubs green for trust; the seal, aurora label lines and the cosmos waitlist section carry the Værksted accents.
+- `scripts/build-brand.py` regenerates every SVG in `public/brand/` (`pip install fonttools uharfbuzz`; fonts are fetched from the Google Fonts repo). The PNGs (icons, `seal.png`, `og-image*.png`) are rendered from those SVGs in a headless browser.
+- `og:image` is a relative URL. Once the domain is known, make it absolute in `index.html`.
 
 ## Languages
 

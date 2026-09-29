@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-label="Synthetic Practitioner">
+<title>Synthetic Practitioner</title>
+  <defs>
+    <linearGradient id="ssgold" gradientUnits="userSpaceOnUse" x1="0" y1="4" x2="0" y2="92"><stop offset="0%" stop-color="#F7E7B0"/><stop offset="38%" stop-color="#E6C56F"/><stop offset="52%" stop-color="#B8893A"/><stop offset="72%" stop-color="#EBD083"/><stop offset="100%" stop-color="#F7E7B0"/></linearGradient>
+    <radialGradient id="ssdisc" gradientUnits="userSpaceOnUse" cx="48" cy="23.8" r="66">
+      <stop offset="0%" stop-color="#17463b"/><stop offset="55%" stop-color="#0c1d19"/><stop offset="100%" stop-color="#07080D"/>
+    </radialGradient>
+    <radialGradient id="sshalo" gradientUnits="userSpaceOnUse" cx="48" cy="48" r="27.28">
+      <stop offset="0%" stop-color="#4FD08A" stop-opacity="0.22"/><stop offset="60%" stop-color="#38C5E0" stop-opacity="0.07"/><stop offset="100%" stop-color="#38C5E0" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <circle cx="48" cy="48" r="44.6" fill="url(#ssdisc)"/>
+  <circle cx="48" cy="48" r="27.28" fill="url(#sshalo)"/>
+  <circle cx="48" cy="48" r="44" fill="none" stroke="url(#ssgold)" stroke-width="4"/>
+  <g transform="translate(14.21 14.21) scale(1.06)">
+    <linearGradient id="ssaurora" gradientUnits="userSpaceOnUse" x1="8" y1="8" x2="56" y2="56"><stop offset="0%" stop-color="#4FD08A"/><stop offset="50%" stop-color="#38C5E0"/><stop offset="100%" stop-color="#5B8DEF"/></linearGradient>
+    <mask id="sscut" maskUnits="userSpaceOnUse" x="0" y="0" width="64" height="64">
+      <rect width="64" height="64" fill="#fff"/><path d="M32 25 A7.88 7.88 0 0 1 32 10.5 A7.88 7.88 0 0 1 32 25Z" fill="#000" stroke="#000" stroke-width="3.6" transform="rotate(45 32 32)"/><path d="M32 25 A7.88 7.88 0 0 1 32 10.5 A7.88 7.88 0 0 1 32 25Z" fill="#000" stroke="#000" stroke-width="3.6" transform="rotate(135 32 32)"/><path d="M32 25 A7.88 7.88 0 0 1 32 10.5 A7.88 7.88 0 0 1 32 25Z" fill="#000" stroke="#000" stroke-width="3.6" transform="rotate(225 32 32)"/><path d="M32 25 A7.88 7.88 0 0 1 32 10.5 A7.88 7.88 0 0 1 32 25Z" fill="#000" stroke="#000" stroke-width="3.6" transform="rotate(315 32 32)"/>
+    </mask>
+    <g mask="url(#sscut)"><path d="M32 26 A13.43 13.43 0 0 1 32 2 A13.43 13.43 0 0 1 32 26Z" fill="url(#ssaurora)" transform="rotate(0 32 32)"/><path d="M32 26 A13.43 13.43 0 0 1 32 2 A13.43 13.43 0 0 1 32 26Z" fill="url(#ssaurora)" transform="rotate(90 32 32)"/><path d="M32 26 A13.43 13.43 0 0 1 32 2 A13.43 13.43 0 0 1 32 26Z" fill="url(#ssaurora)" transform="rotate(180 32 32)"/><path d="M32 26 A13.43 13.43 0 0 1 32 2 A13.43 13.43 0 0 1 32 26Z" fill="url(#ssaurora)" transform="rotate(270 32 32)"/></g>
+    <g opacity="0.8"><path d="M32 25 A7.88 7.88 0 0 1 32 10.5 A7.88 7.88 0 0 1 32 25Z" fill="url(#ssaurora)" transform="rotate(45 32 32)"/><path d="M32 25 A7.88 7.88 0 0 1 32 10.5 A7.88 7.88 0 0 1 32 25Z" fill="url(#ssaurora)" transform="rotate(135 32 32)"/><path d="M32 25 A7.88 7.88 0 0 1 32 10.5 A7.88 7.88 0 0 1 32 25Z" fill="url(#ssaurora)" transform="rotate(225 32 32)"/><path d="M32 25 A7.88 7.88 0 0 1 32 10.5 A7.88 7.88 0 0 1 32 25Z" fill="url(#ssaurora)" transform="rotate(315 32 32)"/></g>
+    <circle cx="32" cy="32" r="3.2" fill="url(#ssaurora)"/>
+  </g>
+</svg>

@@ -8,89 +8,111 @@
   <link rel="icon" href="/brand/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+Runic&display=swap" rel="stylesheet">
   <style>
     :root {
-      --green: #1e6b5c; --green-dark: #144d42; --scrub: #7fb5a6; --tint: #e3f0ec; --fog: #f2f7f5;
-      --ink: #10211d; --ink-soft: #4a5e59; --line: #dbe6e2; --alert: #b42318;
+      --green: #1e6b5c; --deep: #0c1d19; --void: #07080D; --tint: #e3f0ec; --fog: #f2f7f5;
+      --ink: #10211d; --ink-soft: #4a5e59; --line: #dbe6e2; --gold: #E8C879; --frost: #EDEFF3; --alert: #b42318;
+      --aurora: linear-gradient(90deg, #4FD08A, #38C5E0, #5B8DEF);
+      --mono: "JetBrains Mono", ui-monospace, monospace;
     }
     * { box-sizing: border-box; }
-    body { margin: 0; background: #fff; color: var(--ink); font: 17px/1.6 "Albert Sans", system-ui, sans-serif; }
-    .wrap { max-width: 1040px; margin: 0 auto; padding: 56px 20px 96px; }
-    h1 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 600; letter-spacing: -.025em; line-height: 1.06; margin: 24px 0 12px; }
-    h2 { font-size: 1.5rem; font-weight: 600; letter-spacing: -.015em; margin: 64px 0 8px; padding-top: 24px; border-top: 1px solid var(--line); }
-    p { color: var(--ink-soft); max-width: 42em; }
+    body { margin: 0; background: #fff; color: var(--ink); font: 16.5px/1.6 "Space Grotesk", system-ui, sans-serif; }
+    .hero {
+      background: url(/brand/stars.svg) center / cover, radial-gradient(120% 90% at 30% -20%, #153d34, var(--deep) 45%, var(--void) 80%);
+      color: var(--frost);
+    }
+    .hero .wrap { display: grid; grid-template-columns: 260px 1fr; gap: 48px; align-items: center; padding-top: 64px; padding-bottom: 64px; }
+    .wrap { max-width: 1040px; margin: 0 auto; padding: 56px 20px; }
+    .label { display: flex; align-items: center; gap: 12px; font: 500 .76rem var(--mono); text-transform: uppercase; letter-spacing: .14em; color: var(--gold); margin: 0 0 12px; }
+    .label::before { content: ""; width: 28px; height: 2px; border-radius: 1px; background: var(--aurora); }
+    h1 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 600; letter-spacing: -.03em; line-height: 1.06; margin: 0 0 8px; }
+    .runes { font-family: "Noto Sans Runic", sans-serif; letter-spacing: .35em; color: var(--gold); opacity: .9; margin: 0 0 16px; }
+    .hero p { color: #b7c7c2; max-width: 38em; }
+    h2 { font-size: 1.5rem; font-weight: 600; letter-spacing: -.02em; margin: 56px 0 8px; padding-top: 24px; border-top: 1px solid var(--line); }
+    p { color: var(--ink-soft); max-width: 44em; }
+    a { color: var(--green); }
     .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; margin-top: 20px; }
     .tile { border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
     .tile .art { height: 180px; display: grid; place-items: center; padding: 24px; }
     .tile .art img { max-height: 132px; max-width: 100%; }
-    .tile .meta { padding: 12px 16px; font-size: .9rem; display: flex; justify-content: space-between; gap: 8px; border-top: 1px solid var(--line); }
-    .tile .meta a { color: var(--green); font-weight: 600; text-decoration: none; }
-    .dark { background: var(--green); } .ink { background: var(--ink); } .fog { background: var(--fog); }
+    .tile .meta { padding: 12px 16px; font-size: .88rem; display: flex; justify-content: space-between; gap: 8px; border-top: 1px solid var(--line); }
+    .tile .meta a { font-weight: 600; text-decoration: none; }
+    .dark { background: var(--void); } .fog { background: var(--fog); }
     .swatch { border-radius: 14px; border: 1px solid var(--line); overflow: hidden; }
-    .swatch div:first-child { height: 96px; }
-    .swatch div:last-child { padding: 10px 14px; font-size: .88rem; }
+    .swatch div:first-child { height: 88px; }
+    .swatch div:last-child { padding: 10px 14px; font-size: .86rem; }
     .swatch b { display: block; }
-    .swatch code { color: var(--ink-soft); }
-    .type-sample { font-size: 3rem; font-weight: 600; letter-spacing: -.025em; line-height: 1.1; margin: 16px 0 4px; }
+    .swatch code { font-family: var(--mono); color: var(--ink-soft); font-size: .8rem; }
     ul.rules { padding-left: 1.2em; color: var(--ink-soft); }
     ul.rules li { margin-bottom: 6px; }
+    .type-row { display: grid; grid-template-columns: 220px 1fr; gap: 16px; align-items: baseline; padding: 14px 0; border-bottom: 1px solid var(--line); }
+    .type-row code { font-family: var(--mono); font-size: .8rem; color: var(--ink-soft); }
     .do-dont { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 16px; }
     .do-dont > div { border: 1px solid var(--line); border-radius: 14px; padding: 16px 20px; }
     .do-dont h3 { margin: 0 0 8px; font-size: 1rem; }
     .do-dont .no h3 { color: var(--alert); }
     .do-dont .yes h3 { color: var(--green); }
-    @media (max-width: 640px) { .do-dont { grid-template-columns: 1fr; } }
+    @media (max-width: 720px) { .hero .wrap, .do-dont, .type-row { grid-template-columns: 1fr; } .hero img { max-width: 200px; } }
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <img src="/brand/logo.svg" alt="Synthetic Practitioner" height="40">
-    <h1>Brand basics</h1>
-    <p>Synthetic Practitioner should feel like Nordic healthcare at its best: calm, clear, honest and quietly warm. Lots of white space, one confident green, plain words.</p>
+  <header class="hero">
+    <div class="wrap">
+      <img src="/brand/seal.svg" alt="The Synthetic Practitioner seal" width="260" height="260">
+      <div>
+        <p class="label">Brand kit</p>
+        <h1>Synthetic Practitioner</h1>
+        <p class="runes" aria-label="Synthetic Practitioner, in Elder Futhark runes">ᛊᛁᚾᚦᛖᛏᛁᚲ ᛈᚱᚨᚲᛏᛁᛏᛁᛟᚾᛖᚱ</p>
+        <p>Old Norse meets AI, in the <a href="https://vaerksted.ai" target="_blank" rel="noopener" style="color:var(--gold)">Værksted</a> family. The seal pairs a gold rim and the name in Elder Futhark with a healing Selbu rose in aurora light. The website itself stays light and scrubs green, because a health service has to feel trustworthy first.</p>
+      </div>
+    </div>
+  </header>
 
-    <h2>The mark</h2>
-    <p>The Selbu rose: the eight-petal star knitted into Scandinavian mittens and sweaters for generations, drawn here as a healing flower. Its four long petals form a medical plus, so it reads as care at a glance. The colour version is two-tone (scrubs green with washed-scrubs diagonal petals); the white and one-colour versions use a single colour, with thin gaps keeping the petals apart.</p>
+  <main class="wrap">
+    <h2 style="border:0;padding:0;margin-top:0">The seal</h2>
+    <p>A sibling of the Værksted medallion. <strong>Rim:</strong> gold metal, as in the Værksted seal. <strong>Rune ring:</strong> "Synthetic Practitioner" spelled letter by letter in Elder Futhark, the way Værksted writes its own name. <strong>Centre:</strong> the Selbu rose from Scandinavian knitwear, drawn as a healing flower whose four long petals form a medical plus, lit in the green-to-blue arc of Værksted's Bifröst gradient: the northern lights. <strong>Disc:</strong> the Værksted cosmos, tinted scrubs green.</p>
     <div class="grid">
-      <div class="tile"><div class="art"><img src="/brand/logo.svg" alt="Horizontal logo"></div><div class="meta">Primary logo <a href="/brand/logo.svg" download>SVG</a></div></div>
-      <div class="tile"><div class="art dark"><img src="/brand/logo-white.svg" alt="Horizontal logo, white"></div><div class="meta">On green or photos <a href="/brand/logo-white.svg" download>SVG</a></div></div>
-      <div class="tile"><div class="art fog"><img src="/brand/logo-black.svg" alt="Horizontal logo, one colour"></div><div class="meta">One colour <a href="/brand/logo-black.svg" download>SVG</a></div></div>
-      <div class="tile"><div class="art"><img src="/brand/logo-stacked.svg" alt="Stacked logo"></div><div class="meta">Stacked <a href="/brand/logo-stacked.svg" download>SVG</a></div></div>
-      <div class="tile"><div class="art dark"><img src="/brand/logo-stacked-white.svg" alt="Stacked logo, white"></div><div class="meta">Stacked, white <a href="/brand/logo-stacked-white.svg" download>SVG</a></div></div>
-      <div class="tile"><div class="art"><img src="/brand/mark.svg" alt="Mark" style="height:96px"></div><div class="meta">Mark only <a href="/brand/mark.svg" download>SVG</a> <a href="/brand/mark-white.svg" download>White</a></div></div>
-      <div class="tile"><div class="art fog"><img src="/brand/icon-512.png" alt="App icon" style="height:120px;border-radius:26px"></div><div class="meta">App icon <a href="/brand/icon-512.png" download>PNG 512</a> <a href="/brand/app-icon.svg" download>SVG</a></div></div>
-      <div class="tile"><div class="art fog"><img src="/brand/og-image.png" alt="Social image"></div><div class="meta">Social image <a href="/brand/og-image.png" download>EN</a> <a href="/brand/og-image-da.png" download>DA</a></div></div>
+      <div class="tile"><div class="art"><img src="/brand/logo.svg" alt="Logo for light backgrounds"></div><div class="meta">Logo, light backgrounds <a href="/brand/logo.svg" download>SVG</a></div></div>
+      <div class="tile"><div class="art dark"><img src="/brand/logo-dark.svg" alt="Logo for dark backgrounds"></div><div class="meta">Logo, dark backgrounds <a href="/brand/logo-dark.svg" download>SVG</a></div></div>
+      <div class="tile"><div class="art"><img src="/brand/seal.svg" alt="Seal"></div><div class="meta">Seal <a href="/brand/seal.svg" download>SVG</a> <a href="/brand/seal.png" download>PNG</a></div></div>
+      <div class="tile"><div class="art fog"><img src="/brand/seal-simple.svg" alt="Simplified seal" style="height:96px"></div><div class="meta">Simplified seal, under 64 px <a href="/brand/seal-simple.svg" download>SVG</a></div></div>
+      <div class="tile"><div class="art fog"><img src="/brand/icon-512.png" alt="App icon" style="height:120px;border-radius:26px"></div><div class="meta">App icon <a href="/brand/icon-512.png" download>PNG</a> <a href="/brand/app-icon.svg" download>SVG</a></div></div>
+      <div class="tile"><div class="art dark"><img src="/brand/og-image.png" alt="Social image"></div><div class="meta">Social image <a href="/brand/og-image.png" download>EN</a> <a href="/brand/og-image-da.png" download>DA</a></div></div>
     </div>
     <ul class="rules">
-      <li>Always draw the mark from the files here. Don't redraw it, rotate it, or turn it into a flag.</li>
-      <li>Keep clear space around the logo of at least the height of the cross bar × 2.</li>
-      <li>Smallest size: mark 16 px, horizontal logo 24 px high.</li>
-      <li>The wordmark is always lowercase, set in Albert Sans SemiBold. In running text, write "Synthetic Practitioner".</li>
+      <li>Use the full seal from 64 px up; below that, the simplified seal (no rune ring).</li>
+      <li>Always use the files here. Don't redraw the seal, recolour the rim or swap the runes.</li>
+      <li>The rune line under the wordmark is decoration. Never use runes on their own as a symbol or in place of the name.</li>
+      <li>In running text, write "Synthetic Practitioner".</li>
     </ul>
 
     <h2>Colour</h2>
-    <p>Scrubs green carries the brand. Everything else stays quiet. Red is reserved for emergencies and warnings, never for decoration.</p>
+    <p>Scrubs green carries the site; gold and the cosmos come from Værksted and appear in the seal, the waitlist and social images. Aurora is for small glowing accents only. Red is reserved for emergencies.</p>
     <div class="grid">
-      <div class="swatch"><div style="background:#1e6b5c"></div><div><b>Scrubs green</b><code>#1E6B5C</code> · buttons, mark, links</div></div>
-      <div class="swatch"><div style="background:#144d42"></div><div><b>Deep green</b><code>#144D42</code> · hover, dark sections</div></div>
-      <div class="swatch"><div style="background:#7fb5a6"></div><div><b>Washed scrubs</b><code>#7FB5A6</code> · accents, illustration</div></div>
-      <div class="swatch"><div style="background:#e3f0ec"></div><div><b>Tint</b><code>#E3F0EC</code> · icon backgrounds, badges</div></div>
-      <div class="swatch"><div style="background:#f2f7f5"></div><div><b>Fog</b><code>#F2F7F5</code> · alternate sections</div></div>
+      <div class="swatch"><div style="background:#1e6b5c"></div><div><b>Scrubs green</b><code>#1E6B5C</code> · buttons, links, headings</div></div>
+      <div class="swatch"><div style="background:#e3f0ec"></div><div><b>Tint</b><code>#E3F0EC</code> · icon backgrounds</div></div>
       <div class="swatch"><div style="background:#10211d"></div><div><b>Ink</b><code>#10211D</code> · text</div></div>
+      <div class="swatch"><div style="background:linear-gradient(180deg,#F7E7B0,#E6C56F 38%,#B8893A 52%,#EBD083 72%,#F7E7B0)"></div><div><b>Gold metal</b><code>#E8C879</code> · seal rim, wordmark on dark</div></div>
+      <div class="swatch"><div style="background:radial-gradient(120% 90% at 30% -20%,#153d34,#0c1d19 45%,#07080D 80%)"></div><div><b>Green cosmos</b><code>#0C1D19 → #07080D</code> · seal disc, dark sections</div></div>
+      <div class="swatch"><div style="background:linear-gradient(90deg,#4FD08A,#38C5E0,#5B8DEF)"></div><div><b>Aurora</b><code>#4FD08A → #38C5E0 → #5B8DEF</code> · the rose, label lines</div></div>
       <div class="swatch"><div style="background:#b42318"></div><div><b>Alert red</b><code>#B42318</code> · emergencies only</div></div>
     </div>
 
     <h2>Typography</h2>
-    <p>Albert Sans, a geometric sans-serif inspired by Scandinavian minimalism (free, Google Fonts, SIL Open Font License). SemiBold with tight tracking for headings; Regular for text.</p>
-    <div class="type-sample">Føler du dig sløj? <span style="color:var(--green)">Lad os snakke.</span></div>
-    <p style="margin-top:0">Albert Sans SemiBold · −2.5% tracking</p>
+    <p>The Værksted faces, all free on Google Fonts under the SIL Open Font License.</p>
+    <div class="type-row"><code>Space Grotesk 600</code><span style="font-size:2rem;font-weight:600;letter-spacing:-.03em">Føler du dig sløj? <span style="color:var(--green)">Lad os snakke.</span></span></div>
+    <div class="type-row"><code>Space Grotesk 400</code><span>Body text. Plain, calm sentences in Danish and English.</span></div>
+    <div class="type-row"><code>JetBrains Mono 500</code><span style="font-family:var(--mono);text-transform:uppercase;letter-spacing:.14em;font-size:.8rem;color:var(--green)">Labels · status · small caps</span></div>
+    <div class="type-row"><code>Noto Sans Runic</code><span style="font-family:'Noto Sans Runic';letter-spacing:.35em;color:#B8893A">ᛊᛁᚾᚦᛖᛏᛁᚲ ᛈᚱᚨᚲᛏᛁᛏᛁᛟᚾᛖᚱ</span></div>
 
     <h2>Voice</h2>
     <div class="do-dont">
       <div class="yes"><h3>We sound like</h3><ul class="rules"><li>A calm, kind GP at 2 a.m.</li><li>Short sentences, plain Danish and English</li><li>Honest about limits: "a doctor takes over here"</li></ul></div>
-      <div class="no"><h3>We never</h3><ul class="rules"><li>Pretend the AI is a human or a "læge"</li><li>Promise outcomes or use fear</li><li>Use emojis, exclamation-heavy hype or medical jargon</li></ul></div>
+      <div class="no"><h3>We never</h3><ul class="rules"><li>Pretend the AI is a human or a "læge"</li><li>Promise outcomes or use fear</li><li>Use emojis, hype or medical jargon</li></ul></div>
     </div>
-    <p style="margin-top:64px;font-size:.9rem">Synthetic Practitioner is an idea by <a href="https://vaerksted.ai" target="_blank" rel="noopener" style="color:var(--green)">vaerksted</a>.</p>
-  </div>
+
+    <p style="margin-top:56px;font-size:.9rem">Synthetic Practitioner is an idea by <a href="https://vaerksted.ai" target="_blank" rel="noopener">vaerksted</a>. Files are generated by <code>scripts/build-brand.py</code>.</p>
+  </main>
 </body>
 </html>

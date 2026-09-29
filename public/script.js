@@ -243,7 +243,7 @@
 
   function pin(x, y, n) {
     return '<g class="ov-pin"><circle cx="' + x + '" cy="' + y + '" r="12" fill="#1e6b5c" stroke="#fff" stroke-width="2.5"/>' +
-      '<text x="' + x + '" y="' + (y + 4) + '" fill="#fff" font-size="12" font-weight="800" text-anchor="middle" font-family="Albert Sans, sans-serif">' + n + '</text></g>';
+      '<text x="' + x + '" y="' + (y + 4) + '" fill="#fff" font-size="12" font-weight="800" text-anchor="middle" font-family="Space Grotesk, sans-serif">' + n + '</text></g>';
   }
 
   function markSVG(m, i) {
@@ -266,7 +266,7 @@
       g += '<path d="' + d + '" ' + shadow + '/><path d="' + d + '" stroke="#fff" stroke-width="2.5" fill="none"/>';
       var mid = (m.x1 + m.x2) / 2, w = m.label.length * 7 + 18;
       g += '<rect x="' + (mid - w / 2) + '" y="' + (m.y1 - 30) + '" width="' + w + '" height="20" rx="10" fill="rgba(46,35,32,.75)"/>' +
-        '<text x="' + mid + '" y="' + (m.y1 - 16) + '" fill="#fff" font-size="11.5" font-weight="700" text-anchor="middle" font-family="Albert Sans, sans-serif">' + m.label + '</text>';
+        '<text x="' + mid + '" y="' + (m.y1 - 16) + '" fill="#fff" font-size="11.5" font-weight="700" text-anchor="middle" font-family="Space Grotesk, sans-serif">' + m.label + '</text>';
     }
     return '<g class="ov-mark"' + (m.note !== undefined ? ' data-note="' + m.note + '"' : '') + '>' + g + '</g>';
   }
@@ -371,7 +371,7 @@
       '<g id="glass-move"><circle r="56" fill="none" stroke="rgba(46,35,32,.3)" stroke-width="9"/><circle r="56" fill="none" stroke="#fff" stroke-width="5" opacity=".95"/>' +
       '<path d="M-38 -28 A 46 46 0 0 1 -8 -46" stroke="#fff" stroke-width="5" stroke-linecap="round" fill="none" opacity=".8"/>' +
       '<g transform="translate(0 72)"><rect x="-62" y="-12" width="124" height="24" rx="12" fill="rgba(46,35,32,.75)"/>' +
-      '<text y="4" fill="#fff" font-size="11.5" font-weight="700" text-anchor="middle" font-family="Albert Sans, sans-serif"></text></g></g>';
+      '<text y="4" fill="#fff" font-size="11.5" font-weight="700" text-anchor="middle" font-family="Space Grotesk, sans-serif"></text></g></g>';
     glassG.querySelector('text').textContent = t('glass.drag');
     moveGlass(gl.x, gl.y);
     overlayG.classList.add('off');

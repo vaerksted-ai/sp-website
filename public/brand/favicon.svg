@@ -1,11 +1,24 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64.0 64.0" role="img" aria-label="Synthetic Practitioner">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Synthetic Practitioner">
 <title>Synthetic Practitioner</title>
-<rect width="64" height="64" rx="14" fill="#1e6b5c"/><g transform="translate(5.12 5.12) scale(0.84)">
-  <mask id="f" maskUnits="userSpaceOnUse" x="0" y="0" width="64" height="64">
-    <rect width="64" height="64" fill="#fff"/><path d="M32 25.00 A7.88 7.88 0 0 1 32 10.50 A7.88 7.88 0 0 1 32 25.00Z" fill="#000" stroke="#000" stroke-width="3.6" transform="rotate(45 32 32)"/><path d="M32 25.00 A7.88 7.88 0 0 1 32 10.50 A7.88 7.88 0 0 1 32 25.00Z" fill="#000" stroke="#000" stroke-width="3.6" transform="rotate(135 32 32)"/><path d="M32 25.00 A7.88 7.88 0 0 1 32 10.50 A7.88 7.88 0 0 1 32 25.00Z" fill="#000" stroke="#000" stroke-width="3.6" transform="rotate(225 32 32)"/><path d="M32 25.00 A7.88 7.88 0 0 1 32 10.50 A7.88 7.88 0 0 1 32 25.00Z" fill="#000" stroke="#000" stroke-width="3.6" transform="rotate(315 32 32)"/>
-  </mask>
-  <g mask="url(#f)"><path d="M32 26.00 A13.43 13.43 0 0 1 32 2.00 A13.43 13.43 0 0 1 32 26.00Z" fill="#ffffff" transform="rotate(0 32 32)"/><path d="M32 26.00 A13.43 13.43 0 0 1 32 2.00 A13.43 13.43 0 0 1 32 26.00Z" fill="#ffffff" transform="rotate(90 32 32)"/><path d="M32 26.00 A13.43 13.43 0 0 1 32 2.00 A13.43 13.43 0 0 1 32 26.00Z" fill="#ffffff" transform="rotate(180 32 32)"/><path d="M32 26.00 A13.43 13.43 0 0 1 32 2.00 A13.43 13.43 0 0 1 32 26.00Z" fill="#ffffff" transform="rotate(270 32 32)"/></g>
-  <path d="M32 25.00 A7.88 7.88 0 0 1 32 10.50 A7.88 7.88 0 0 1 32 25.00Z" fill="#a9d4c7" transform="rotate(45 32 32)"/><path d="M32 25.00 A7.88 7.88 0 0 1 32 10.50 A7.88 7.88 0 0 1 32 25.00Z" fill="#a9d4c7" transform="rotate(135 32 32)"/><path d="M32 25.00 A7.88 7.88 0 0 1 32 10.50 A7.88 7.88 0 0 1 32 25.00Z" fill="#a9d4c7" transform="rotate(225 32 32)"/><path d="M32 25.00 A7.88 7.88 0 0 1 32 10.50 A7.88 7.88 0 0 1 32 25.00Z" fill="#a9d4c7" transform="rotate(315 32 32)"/>
-  <circle cx="32" cy="32" r="3.2" fill="#ffffff"/>
-</g>
+  <defs>
+    <linearGradient id="fvgold" gradientUnits="userSpaceOnUse" x1="0" y1="2.5" x2="0" y2="61.5"><stop offset="0%" stop-color="#F7E7B0"/><stop offset="38%" stop-color="#E6C56F"/><stop offset="52%" stop-color="#B8893A"/><stop offset="72%" stop-color="#EBD083"/><stop offset="100%" stop-color="#F7E7B0"/></linearGradient>
+    <radialGradient id="fvdisc" gradientUnits="userSpaceOnUse" cx="32" cy="15.77" r="44.25">
+      <stop offset="0%" stop-color="#17463b"/><stop offset="55%" stop-color="#0c1d19"/><stop offset="100%" stop-color="#07080D"/>
+    </radialGradient>
+    <radialGradient id="fvhalo" gradientUnits="userSpaceOnUse" cx="32" cy="32" r="18.29">
+      <stop offset="0%" stop-color="#4FD08A" stop-opacity="0.22"/><stop offset="60%" stop-color="#38C5E0" stop-opacity="0.07"/><stop offset="100%" stop-color="#38C5E0" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <circle cx="32" cy="32" r="29.9" fill="url(#fvdisc)"/>
+  <circle cx="32" cy="32" r="18.29" fill="url(#fvhalo)"/>
+  <circle cx="32" cy="32" r="29.5" fill="none" stroke="url(#fvgold)" stroke-width="2.68"/>
+  <g transform="translate(9.34 9.34) scale(0.71)">
+    <linearGradient id="fvaurora" gradientUnits="userSpaceOnUse" x1="8" y1="8" x2="56" y2="56"><stop offset="0%" stop-color="#4FD08A"/><stop offset="50%" stop-color="#38C5E0"/><stop offset="100%" stop-color="#5B8DEF"/></linearGradient>
+    <mask id="fvcut" maskUnits="userSpaceOnUse" x="0" y="0" width="64" height="64">
+      <rect width="64" height="64" fill="#fff"/><path d="M32 25 A7.88 7.88 0 0 1 32 10.5 A7.88 7.88 0 0 1 32 25Z" fill="#000" stroke="#000" stroke-width="3.6" transform="rotate(45 32 32)"/><path d="M32 25 A7.88 7.88 0 0 1 32 10.5 A7.88 7.88 0 0 1 32 25Z" fill="#000" stroke="#000" stroke-width="3.6" transform="rotate(135 32 32)"/><path d="M32 25 A7.88 7.88 0 0 1 32 10.5 A7.88 7.88 0 0 1 32 25Z" fill="#000" stroke="#000" stroke-width="3.6" transform="rotate(225 32 32)"/><path d="M32 25 A7.88 7.88 0 0 1 32 10.5 A7.88 7.88 0 0 1 32 25Z" fill="#000" stroke="#000" stroke-width="3.6" transform="rotate(315 32 32)"/>
+    </mask>
+    <g mask="url(#fvcut)"><path d="M32 26 A13.43 13.43 0 0 1 32 2 A13.43 13.43 0 0 1 32 26Z" fill="url(#fvaurora)" transform="rotate(0 32 32)"/><path d="M32 26 A13.43 13.43 0 0 1 32 2 A13.43 13.43 0 0 1 32 26Z" fill="url(#fvaurora)" transform="rotate(90 32 32)"/><path d="M32 26 A13.43 13.43 0 0 1 32 2 A13.43 13.43 0 0 1 32 26Z" fill="url(#fvaurora)" transform="rotate(180 32 32)"/><path d="M32 26 A13.43 13.43 0 0 1 32 2 A13.43 13.43 0 0 1 32 26Z" fill="url(#fvaurora)" transform="rotate(270 32 32)"/></g>
+    <g opacity="0.8"><path d="M32 25 A7.88 7.88 0 0 1 32 10.5 A7.88 7.88 0 0 1 32 25Z" fill="url(#fvaurora)" transform="rotate(45 32 32)"/><path d="M32 25 A7.88 7.88 0 0 1 32 10.5 A7.88 7.88 0 0 1 32 25Z" fill="url(#fvaurora)" transform="rotate(135 32 32)"/><path d="M32 25 A7.88 7.88 0 0 1 32 10.5 A7.88 7.88 0 0 1 32 25Z" fill="url(#fvaurora)" transform="rotate(225 32 32)"/><path d="M32 25 A7.88 7.88 0 0 1 32 10.5 A7.88 7.88 0 0 1 32 25Z" fill="url(#fvaurora)" transform="rotate(315 32 32)"/></g>
+    <circle cx="32" cy="32" r="3.2" fill="url(#fvaurora)"/>
+  </g>
 </svg>
