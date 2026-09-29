@@ -1,0 +1,562 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>
+    // Pick the language before first paint: saved choice, else browser language.
+    (function () {
+      var lang = null;
+      try { lang = localStorage.getItem('sp-lang'); } catch (e) { /* storage unavailable */ }
+      if (lang !== 'en' && lang !== 'da') {
+        // First Danish or English entry in the browser's language list wins.
+        // Faroese and Greenlandic speakers get Danish.
+        lang = 'en';
+        var list = navigator.languages || [navigator.language || 'en'];
+        for (var i = 0; i < list.length; i++) {
+          var l = String(list[i]).toLowerCase();
+          if (/^(da|fo|kl)\b/.test(l)) { lang = 'da'; break; }
+          if (/^en\b/.test(l)) break;
+        }
+      }
+      var root = document.documentElement;
+      root.lang = lang;
+      if (lang !== 'en') {
+        root.className += ' i18n-pending';
+        setTimeout(function () { root.classList.remove('i18n-pending'); }, 1500);
+      }
+    })();
+  </script>
+  <title data-i18n="meta.title">Synthetic Practitioner — a friendly AI GP for you and your family</title>
+  <meta name="description" data-i18n-attr="content:meta.desc" content="Chat, call or video with an AI general practitioner any time, day or night. Send a photo of a rash and get feedback in minutes. Join the waitlist.">
+  <meta property="og:title" data-i18n-attr="content:meta.title" content="Synthetic Practitioner — a friendly AI GP for you and your family">
+  <meta property="og:description" data-i18n-attr="content:meta.ogDesc" content="Chat, call or video with an AI practitioner, day or night. Join the waitlist for early access.">
+  <meta name="theme-color" content="#1e6b5c">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231e6b5c'/%3E%3Cpath d='M13 8h6v5h5v6h-5v5h-6v-5H8v-6h5z' fill='%23fff'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <symbol id="i-cross" viewBox="0 0 32 32"><path d="M13 8h6v5h5v6h-5v5h-6v-5H8v-6h5z" fill="currentColor" stroke="none"/></symbol>
+      <symbol id="i-thermo" viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"/><path d="M11.5 9v7"/></symbol>
+      <symbol id="i-rash" viewBox="0 0 24 24"><circle cx="7" cy="7.5" r="1.6"/><circle cx="15.5" cy="6" r="1.2"/><circle cx="11.5" cy="12.5" r="2"/><circle cx="17.5" cy="14.5" r="1.4"/><circle cx="6.5" cy="16.5" r="1.3"/><circle cx="12.5" cy="19" r="1"/></symbol>
+      <symbol id="i-wind" viewBox="0 0 24 24"><path d="M17.7 7.7a2.5 2.5 0 1 1 1.8 4.3H2"/><path d="M9.6 4.6A2 2 0 1 1 11 8H2"/><path d="M12.6 19.4A2 2 0 1 0 14 16H2"/></symbol>
+      <symbol id="i-ear" viewBox="0 0 24 24"><path d="M6 8.5a6.5 6.5 0 1 1 13 0c0 6-6 6-6 10a3.5 3.5 0 1 1-7 0"/><path d="M15 8.5a2.5 2.5 0 0 0-5 0v1a2 2 0 1 1 0 4"/></symbol>
+      <symbol id="i-drop" viewBox="0 0 24 24"><path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/></symbol>
+      <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 10l9-7 9 7v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z"/><path d="M9 21v-6h6v6"/></symbol>
+      <symbol id="i-plaster" viewBox="0 0 24 24"><path d="M18.5 5.5a3.5 3.5 0 0 0-5 0l-8 8a3.5 3.5 0 0 0 5 5l8-8a3.5 3.5 0 0 0 0-5z"/><path d="M10 12h.01M12 10h.01M12 14h.01M14 12h.01"/></symbol>
+      <symbol id="i-bottle" viewBox="0 0 24 24"><path d="M10 2h4M9 5h6"/><path d="M9 5v2l-1 2v11a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2V9l-1-2V5"/><path d="M8 13h8"/></symbol>
+      <symbol id="i-steth" viewBox="0 0 24 24"><path d="M4.8 2.3A.3.3 0 1 0 5 2H4a2 2 0 0 0-2 2v5a6 6 0 0 0 12 0V4a2 2 0 0 0-2-2h-1a.2.2 0 1 0 .3.3"/><path d="M8 15v1a6 6 0 0 0 12 0v-4"/><circle cx="20" cy="10" r="2"/></symbol>
+      <symbol id="i-clipboard" viewBox="0 0 24 24"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M9 12h6M9 16h4"/></symbol>
+      <symbol id="i-pill" viewBox="0 0 24 24"><path d="M10.5 20.5a4.95 4.95 0 1 1-7-7l7-7a4.95 4.95 0 1 1 7 7z"/><path d="M8.5 8.5l7 7"/></symbol>
+      <symbol id="i-pulse" viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></symbol>
+      <symbol id="i-heart" viewBox="0 0 24 24"><path d="M19 14c1.5-1.5 3-3.2 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.8 0-3 .5-4.5 2-1.5-1.5-2.7-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4 3 5.5l7 7z"/></symbol>
+      <symbol id="i-mic" viewBox="0 0 24 24"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v3"/></symbol>
+      <symbol id="i-mic-off" viewBox="0 0 24 24"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v3M3 3l18 18"/></symbol>
+      <symbol id="i-speaker" viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14"/></symbol>
+      <symbol id="i-video" viewBox="0 0 24 24"><path d="M22 7l-6 5 6 5z"/><rect x="2" y="5" width="14" height="14" rx="2"/></symbol>
+      <symbol id="i-flip" viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 15-6.7L21 8M21 3v5h-5M21 12a9 9 0 0 1-15 6.7L3 16M3 21v-5h5"/></symbol>
+      <symbol id="i-hangup" viewBox="0 0 24 24"><path d="M3 15.5c5-4.7 13-4.7 18 0l-2.3 2.3a1.5 1.5 0 0 1-2 .1l-2-1.5a1.5 1.5 0 0 1-.6-1.2v-1.6c-2-.6-4.2-.6-6.2 0v1.6a1.5 1.5 0 0 1-.6 1.2l-2 1.5a1.5 1.5 0 0 1-2-.1z"/></symbol>
+      <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></symbol>
+    </defs>
+  </svg>
+  <div class="emergency-bar" role="note" data-i18n="emergency">
+    <strong>In an emergency, call <a href="tel:112">112</a>.</strong>
+    For urgent help that isn't life-threatening, call your region's out-of-hours line (Capital Region: <a href="tel:1813">1813</a>). We're not an emergency service.
+  </div>
+
+  <header class="nav">
+    <div class="container nav-inner">
+      <a href="#top" class="logo" data-i18n-attr="aria-label:nav.home" aria-label="Synthetic Practitioner home">
+        <span class="logo-mark" aria-hidden="true"><svg viewBox="0 0 32 32" width="30" height="30"><rect width="32" height="32" rx="8" fill="currentColor"/><path d="M13 8h6v5h5v6h-5v5h-6v-5H8v-6h5z" fill="var(--on-brand)"/></svg></span>
+        <span>Synthetic Practitioner</span>
+      </a>
+      <nav data-i18n-attr="aria-label:nav.label" aria-label="Main">
+        <ul class="nav-links">
+          <li><a href="#ways" data-i18n="nav.ways">Chat, call, video</a></li>
+          <li><a href="#photos" data-i18n="nav.photos">Photo feedback</a></li>
+          <li><a href="#families" data-i18n="nav.families">For families</a></li>
+          <li><a href="#legal" data-i18n="nav.legal">What we can't do</a></li>
+          <li><a href="#faq" data-i18n="nav.faq">FAQ</a></li>
+        </ul>
+      </nav>
+      <div class="nav-actions">
+        <div class="lang-switch" role="group" data-i18n-attr="aria-label:nav.lang" aria-label="Language">
+          <button type="button" data-set-lang="da" lang="da" aria-pressed="false" title="Dansk">DA</button>
+          <button type="button" data-set-lang="en" lang="en" aria-pressed="true" title="English">EN</button>
+        </div>
+        <a href="#waitlist" class="btn btn-small nav-cta" data-i18n="nav.cta">Join the waitlist</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow"><span data-i18n="hero.eyebrow">A new idea from vaerksted</span></p>
+          <h1 data-i18n="hero.title">Feeling poorly? <em>Let's talk.</em></h1>
+          <p class="lead" data-i18n="hero.lead">
+            Synthetic Practitioner is a friendly AI general practitioner you can chat with, call or see on video,
+            any time of day or night. Show it that rash, describe that cough, ask the question that's kept you up.
+            It listens patiently, explains things in plain language and helps you decide what to do next.
+            When you need a human doctor, it gets you one.
+          </p>
+          <ul class="hero-points">
+            <li data-i18n="hero.p1">No phone queue at 08:00, no waiting room</li>
+            <li data-i18n="hero.p2">Chat, voice or video, in Danish or English</li>
+            <li data-i18n="hero.p3">Made with families with small children in mind</li>
+          </ul>
+          <div class="hero-cta">
+            <a href="#waitlist" class="btn" data-i18n="hero.cta">Get early access</a>
+            <a href="#photos" class="btn btn-ghost" data-i18n="hero.cta2">See the photo demo</a>
+          </div>
+          <p class="fineprint" data-i18n="hero.fine">We're still building it. Joining the waitlist is free and doesn't commit you to anything.</p>
+        </div>
+
+        <div class="hero-visual">
+          <div class="mode-tabs" role="tablist" data-i18n-attr="aria-label:modes.label" aria-label="Ways to talk">
+            <button role="tab" id="tab-chat" aria-controls="panel-chat" aria-selected="true" data-mode="chat">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/></svg><span data-i18n="modes.chat">Chat</span>
+            </button>
+            <button role="tab" id="tab-voice" aria-controls="panel-voice" aria-selected="false" tabindex="-1" data-mode="voice">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h3l2 5-2 1.5a11 11 0 0 0 5.5 5.5L16 13l5 2v3a3 3 0 0 1-3 3A15 15 0 0 1 3 6a3 3 0 0 1 3-3z"/></svg><span data-i18n="modes.voice">Voice call</span>
+            </button>
+            <button role="tab" id="tab-video" aria-controls="panel-video" aria-selected="false" tabindex="-1" data-mode="video">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h12v12H3zM15 10l6-3v10l-6-3z"/></svg><span data-i18n="modes.video">Video call</span>
+            </button>
+          </div>
+
+          <div class="device">
+            <!-- CHAT -->
+            <div class="panel" id="panel-chat" role="tabpanel" aria-labelledby="tab-chat" data-panel="chat">
+              <div class="panel-head">
+                <span class="avatar-sm" aria-hidden="true"><svg viewBox="0 0 32 32"><use href="#i-cross"/></svg></span>
+                <div><strong>Synthetic Practitioner</strong><span data-i18n="chat.sub">AI practitioner · replies in seconds</span></div>
+              </div>
+              <div class="chat-body">
+                <div class="msg user" data-step data-i18n="chat.m1">Hi, my 2-year-old has 39.2 °C fever tonight. She's drinking, but she's really tired.</div>
+                <div class="msg ai" data-step data-i18n="chat.m2">Oh, poor thing, and poor you at this hour. Let's figure it out together. When she's awake, does she respond to you and look at you like usual? And have you noticed any rash?</div>
+                <div class="msg user" data-step data-i18n="chat.m3">Yes, she's cuddly and even played a bit. No rash.</div>
+                <div class="msg ai" data-step data-i18n="chat.m4">Those are really good signs. Fever is the body fighting an infection and isn't dangerous in itself. Keep offering drinks and let her rest.
+                  <span class="tip">I'll check in with you in the morning. If she gets floppy, hard to wake or breathes with effort, call 112 straight away.</span>
+                </div>
+                <div class="typing" data-step><span></span><span></span><span></span></div>
+              </div>
+            </div>
+
+            <!-- VOICE -->
+            <div class="panel" id="panel-voice" role="tabpanel" aria-labelledby="tab-voice" data-panel="voice" hidden>
+              <div class="voice">
+                <p class="call-status"><span class="rec" aria-hidden="true"></span> <span data-i18n="voice.status">Voice call</span> · <span class="call-timer">02:14</span></p>
+                <div class="orb" aria-hidden="true">
+                  <span class="ring"></span><span class="ring"></span><span class="ring"></span>
+                  <div class="bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+                </div>
+                <p class="speaker">Synthetic Practitioner <span class="ai-badge">AI</span></p>
+                <div class="transcript" aria-live="off">
+                  <p class="t user" data-step data-i18n="voice.t1"><b>You:</b> He's got a barking cough and just woke up crying.</p>
+                  <p class="t ai" data-step data-i18n="voice.t2"><b>AI:</b> That sounds scary at night. When he's calm, do you hear a high, squeaky sound as he breathes in?</p>
+                  <p class="t user" data-step data-i18n="voice.t3"><b>You:</b> Only when he cries.</p>
+                  <p class="t ai" data-step data-i18n="voice.t4"><b>AI:</b> That sounds like croup, which is very common at his age. Hold him upright and keep him calm. If he struggles to breathe or goes pale or blue, call 112.</p>
+                </div>
+                <div class="call-controls" aria-hidden="true">
+                  <span class="cc"><svg class="icon" aria-hidden="true"><use href="#i-mic-off"/></svg></span><span class="cc"><svg class="icon" aria-hidden="true"><use href="#i-speaker"/></svg></span><span class="cc end"><svg class="icon" aria-hidden="true"><use href="#i-hangup"/></svg></span>
+                </div>
+              </div>
+            </div>
+
+            <!-- VIDEO -->
+            <div class="panel" id="panel-video" role="tabpanel" aria-labelledby="tab-video" data-panel="video" hidden>
+              <div class="video">
+                <div class="video-main" id="video-main">
+                  <svg class="cam-view" id="cam-view" viewBox="0 0 320 240" preserveAspectRatio="xMidYMid slice" aria-hidden="true"></svg>
+                  <span class="video-label"><svg class="icon" aria-hidden="true"><use href="#i-video"/></svg><span data-i18n="video.self">Your camera</span></span>
+                  <span class="video-chip" id="video-chip"></span>
+                  <div class="ai-tile">
+                    <div class="ai-presence" aria-hidden="true">
+                      <span class="pulse"></span><span class="pulse"></span>
+                      <span class="ai-core"><svg viewBox="0 0 32 32"><use href="#i-cross"/></svg></span>
+                    </div>
+                    <div class="ai-bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+                    <span class="ai-name">Synthetic Practitioner <span class="ai-badge">AI</span></span>
+                  </div>
+                  <p class="captions" aria-live="off"></p>
+                </div>
+                <div class="call-controls" aria-hidden="true">
+                  <span class="cc"><svg class="icon" aria-hidden="true"><use href="#i-mic"/></svg></span><span class="cc"><svg class="icon" aria-hidden="true"><use href="#i-video"/></svg></span><span class="cc"><svg class="icon" aria-hidden="true"><use href="#i-flip"/></svg></span><span class="cc end"><svg class="icon" aria-hidden="true"><use href="#i-hangup"/></svg></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <p class="mode-note" data-i18n="modes.note">Illustration of the planned experience. You're always told you're talking to an AI.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- STRIP -->
+    <section class="strip">
+      <div class="container strip-inner">
+        <div><strong>24/7</strong><span data-i18n="strip.1">awake when you are</span></div>
+        <div><strong data-i18n="strip.2t">Chat · call · video</strong><span data-i18n="strip.2">whatever feels easiest</span></div>
+        <div><strong data-i18n="strip.3t">Photo feedback</strong><span data-i18n="strip.3">rashes, bites and spots</span></div>
+        <div><strong data-i18n="strip.4t">A human when needed</strong><span data-i18n="strip.4">licensed doctors ready to take over</span></div>
+      </div>
+    </section>
+
+    <!-- WAYS TO TALK -->
+    <section id="ways" class="section">
+      <div class="container">
+        <p class="eyebrow" data-i18n="ways.eyebrow">Three ways to talk</p>
+        <h2 data-i18n="ways.title">However you feel like talking, <em>we're here.</em></h2>
+        <p class="section-lead" data-i18n="ways.lead">Sometimes you want to type quietly next to a sleeping child. Sometimes you just want to hear a calm voice. And sometimes it's easier to show than to explain.</p>
+        <div class="ways">
+          <article class="way">
+            <div class="way-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/></svg></div>
+            <h3 data-i18n="modes.chat">Chat</h3>
+            <p data-i18n="ways.chat">Type at your own pace and send photos along the way. Great for quiet nights, quick questions and anything you'd like to have in writing afterwards.</p>
+          </article>
+          <article class="way">
+            <div class="way-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 3h3l2 5-2 1.5a11 11 0 0 0 5.5 5.5L16 13l5 2v3a3 3 0 0 1-3 3A15 15 0 0 1 3 6a3 3 0 0 1 3-3z"/></svg></div>
+            <h3 data-i18n="modes.voice">Voice call</h3>
+            <p data-i18n="ways.voice">Just talk, hands free, while you rock a crying baby or pace the hallway. It listens to the cough, asks gentle questions and talks you through what to do.</p>
+          </article>
+          <article class="way">
+            <div class="way-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 6h12v12H3zM15 10l6-3v10l-6-3z"/></svg></div>
+            <h3 data-i18n="modes.video">Video call</h3>
+            <p data-i18n="ways.video">Show a rash, a swollen eye or how your child is breathing. The AI can point out what it notices on your camera and guide you through simple checks, like the glass test.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- PHOTO DEMO -->
+    <section id="photos" class="section section-alt">
+      <div class="container">
+        <p class="eyebrow" data-i18n="photos.eyebrow">Photo feedback</p>
+        <h2 data-i18n="photos.title">Snap a photo. <em>See what it sees.</em></h2>
+        <p class="section-lead" data-i18n="photos.lead">
+          Send a picture of a rash, a bite or a patch of dry skin, and the AI marks up what it notices right on
+          top of your photo: the shape, the size, the spots worth watching. Then it explains in plain words what it
+          might be and what to do. Try an example below.
+        </p>
+
+        <div class="demo">
+          <div class="demo-cases" role="radiogroup" data-i18n-attr="aria-label:photos.cases" aria-label="Example photos">
+            <!-- filled by script.js -->
+          </div>
+
+          <div class="demo-grid">
+            <div class="demo-photo">
+              <div class="photo-frame">
+                <svg id="photo-svg" viewBox="0 0 400 300" role="img" aria-labelledby="photo-title">
+                  <title id="photo-title">Example photo</title>
+                  <defs>
+                    <radialGradient id="skin" gradientUnits="userSpaceOnUse" cx="180" cy="120" r="300">
+                      <stop offset="0" stop-color="#f3c7a6"/><stop offset=".7" stop-color="#e7b08d"/><stop offset="1" stop-color="#d49a78"/>
+                    </radialGradient>
+                    <filter id="soft" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="1.3"/></filter>
+                    <filter id="softer" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="6"/></filter>
+                    <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="4"/><feColorMatrix values="0 0 0 0 .45  0 0 0 0 .3  0 0 0 0 .22  0 0 0 .09 0"/></filter>
+                    <linearGradient id="scan" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#fff" stop-opacity=".9"/></linearGradient>
+                    <clipPath id="glass-clip"><circle id="glass-clip-c" cx="-100" cy="-100" r="56"/></clipPath>
+                  </defs>
+                  <rect width="400" height="300" fill="url(#skin)"/>
+                  <rect width="400" height="300" filter="url(#grain)"/>
+                  <g id="photo-skin"></g>
+                  <g id="photo-overlay"></g>
+                  <g id="photo-glass" opacity="0"></g>
+                  <rect id="scanline" x="0" y="-8" width="400" height="8" fill="url(#scan)" opacity="0"/>
+                </svg>
+                <span class="photo-status" id="photo-status"></span>
+              </div>
+              <div class="demo-controls">
+                <label class="switch">
+                  <input type="checkbox" id="overlay-toggle" checked>
+                  <span class="switch-track" aria-hidden="true"></span>
+                  <span data-i18n="photos.toggle">Show AI markings</span>
+                </label>
+                <button type="button" class="btn btn-small btn-soft" id="glass-btn" hidden></button>
+              </div>
+            </div>
+
+            <div class="demo-feedback" aria-live="polite">
+              <div class="fb-head">
+                <span class="avatar-sm" aria-hidden="true"><svg viewBox="0 0 32 32"><use href="#i-cross"/></svg></span>
+                <div><strong data-i18n="photos.notice">What I notice</strong><span id="fb-sub"></span></div>
+              </div>
+              <ol class="findings" id="findings"></ol>
+              <div class="fb-block">
+                <h4 data-i18n="photos.might">What it might be</h4>
+                <p id="fb-assess"></p>
+              </div>
+              <div class="fb-block">
+                <h4 data-i18n="photos.do">What you can do</h4>
+                <ul id="fb-advice"></ul>
+              </div>
+              <div class="fb-block warn">
+                <h4 data-i18n="photos.help">Get help straight away if</h4>
+                <ul id="fb-flags"></ul>
+              </div>
+              <p class="fb-handoff" id="fb-handoff"></p>
+            </div>
+          </div>
+          <p class="fineprint" data-i18n="photos.fine">Illustrated examples, not real patients, and not medical advice. Photo feedback is an assessment to help you decide what to do next, not a diagnosis. Photos are only used for your consultation, and you can delete them at any time.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAMILIES -->
+    <section id="families" class="section families">
+      <div class="container">
+        <p class="eyebrow" data-i18n="fam.eyebrow">For families with small children</p>
+        <h2 data-i18n="fam.title">For the 2 a.m. <em>"is this normal?"</em> moments</h2>
+        <p class="section-lead" data-i18n="fam.lead">
+          Small children get ill often, usually at night and usually just after the doctor's office has closed.
+          Synthetic Practitioner helps you work out whether it can wait until morning, what you can do at home,
+          and when it's time to get help now. Tap a card to see how it helps.
+        </p>
+
+        <div class="family-grid">
+          <details class="fcard">
+            <summary><span class="fcard-icon"><svg class="icon" aria-hidden="true"><use href="#i-thermo"/></svg></span><span><strong data-i18n="fam.fever.t">Fever</strong><small data-i18n="fam.fever.s">How high is too high? When to worry</small></span></summary>
+            <div class="fcard-body">
+              <p data-i18n="fam.fever.how"><b>How it helps:</b> asks about age, how your child is drinking, sleeping and playing, and explains what the number on the thermometer actually means.</p>
+              <p class="flag" data-i18n="fam.fever.flag"><b>Get help now:</b> baby under 3 months with a temperature of 38 °C or more, a child who is floppy, hard to wake or has a rash that doesn't fade under a glass.</p>
+            </div>
+          </details>
+          <details class="fcard">
+            <summary><span class="fcard-icon"><svg class="icon" aria-hidden="true"><use href="#i-rash"/></svg></span><span><strong data-i18n="fam.rash.t">Rashes &amp; spots</strong><small data-i18n="fam.rash.s">Viral rash, eczema, hives, bites</small></span></summary>
+            <div class="fcard-body">
+              <p data-i18n="fam.rash.how"><b>How it helps:</b> send a photo or show it on video. The AI marks what it sees and walks you through the glass test.</p>
+              <p class="flag" data-i18n="fam.rash.flag"><b>Get help now:</b> small red or purple spots that don't fade when pressed, especially with fever. Call 112.</p>
+            </div>
+          </details>
+          <details class="fcard">
+            <summary><span class="fcard-icon"><svg class="icon" aria-hidden="true"><use href="#i-wind"/></svg></span><span><strong data-i18n="fam.croup.t">Croup &amp; night coughs</strong><small data-i18n="fam.croup.s">That barking cough</small></span></summary>
+            <div class="fcard-body">
+              <p data-i18n="fam.croup.how"><b>How it helps:</b> on a voice call it can listen to the cough and your child's breathing, and help you keep calm and keep your child calm.</p>
+              <p class="flag" data-i18n="fam.croup.flag"><b>Get help now:</b> noisy breathing at rest, pulling in between the ribs, drooling or trouble swallowing, pale or blue lips.</p>
+            </div>
+          </details>
+          <details class="fcard">
+            <summary><span class="fcard-icon"><svg class="icon" aria-hidden="true"><use href="#i-ear"/></svg></span><span><strong data-i18n="fam.ear.t">Earache</strong><small data-i18n="fam.ear.s">Tugging at ears, crying at night</small></span></summary>
+            <div class="fcard-body">
+              <p data-i18n="fam.ear.how"><b>How it helps:</b> advice on pain relief and comfort, and whether it's likely to settle by itself, as most ear infections do within a few days.</p>
+              <p class="flag" data-i18n="fam.ear.flag"><b>See a doctor:</b> pain lasting more than 2–3 days, fluid from the ear, or swelling behind the ear. A doctor needs to look inside the ear.</p>
+            </div>
+          </details>
+          <details class="fcard">
+            <summary><span class="fcard-icon"><svg class="icon" aria-hidden="true"><use href="#i-drop"/></svg></span><span><strong data-i18n="fam.tummy.t">Tummy bugs</strong><small data-i18n="fam.tummy.s">Vomiting, diarrhoea, fluids</small></span></summary>
+            <div class="fcard-body">
+              <p data-i18n="fam.tummy.how"><b>How it helps:</b> a simple fluid plan (little and often, oral rehydration salts) and how to spot the signs of dehydration.</p>
+              <p class="flag" data-i18n="fam.tummy.flag"><b>Get help now:</b> no wet nappy for 8 hours or more, very drowsy, green vomit, blood in the stool, or a baby who can't keep anything down.</p>
+            </div>
+          </details>
+          <details class="fcard">
+            <summary><span class="fcard-icon"><svg class="icon" aria-hidden="true"><use href="#i-home"/></svg></span><span><strong data-i18n="fam.daycare.t">Daycare bugs</strong><small data-i18n="fam.daycare.s">Hand, foot &amp; mouth, conjunctivitis, lice</small></span></summary>
+            <div class="fcard-body">
+              <p data-i18n="fam.daycare.how"><b>How it helps:</b> recognising the common things children bring home from daycare (vuggestue and børnehave), what helps, and when they can go back.</p>
+              <p class="flag" data-i18n="fam.daycare.flag"><b>See a doctor:</b> a child who won't drink because of mouth sores, or an eye that's red, swollen and painful.</p>
+            </div>
+          </details>
+          <details class="fcard">
+            <summary><span class="fcard-icon"><svg class="icon" aria-hidden="true"><use href="#i-plaster"/></svg></span><span><strong data-i18n="fam.bumps.t">Bumps &amp; falls</strong><small data-i18n="fam.bumps.s">Head bumps, small cuts, burns</small></span></summary>
+            <div class="fcard-body">
+              <p data-i18n="fam.bumps.how"><b>How it helps:</b> what to look for in the hours after a knock to the head, simple first aid, and when a cut needs stitches.</p>
+              <p class="flag" data-i18n="fam.bumps.flag"><b>Get help now:</b> loss of consciousness, repeated vomiting, unusual drowsiness or confusion after a head injury. Burns larger than your child's palm.</p>
+            </div>
+          </details>
+          <details class="fcard">
+            <summary><span class="fcard-icon"><svg class="icon" aria-hidden="true"><use href="#i-bottle"/></svg></span><span><strong data-i18n="fam.baby.t">Babies &amp; new parents</strong><small data-i18n="fam.baby.s">Nappy rash, sleep, feeding, teething</small></span></summary>
+            <div class="fcard-body">
+              <p data-i18n="fam.baby.how"><b>How it helps:</b> gentle, judgement-free answers to all the "is this normal?" questions, including the ones you feel silly asking at 3 a.m.</p>
+              <p class="flag" data-i18n="fam.baby.flag"><b>Get help now:</b> a baby who is unusually floppy, feeds much less than usual, or has trouble breathing.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- MORE USE CASES -->
+    <section id="use-cases" class="section section-alt">
+      <div class="container">
+        <p class="eyebrow" data-i18n="uses.eyebrow">And for the grown-ups too</p>
+        <h2 data-i18n="uses.title">The everyday things you'd bring to your GP</h2>
+        <div class="cards">
+          <article class="card"><span class="card-icon"><svg class="icon" aria-hidden="true"><use href="#i-steth"/></svg></span><h3 data-i18n="uses.1t">"How urgent is this?"</h3><p data-i18n="uses.1">Describe what's wrong in your own words. You'll get a clear answer: take care at home, see a doctor this week, call the out-of-hours line now, or call 112.</p></article>
+          <article class="card"><span class="card-icon"><svg class="icon" aria-hidden="true"><use href="#i-thermo"/></svg></span><h3 data-i18n="uses.2t">Common illnesses</h3><p data-i18n="uses.2">Colds, flu, sore throats, urinary discomfort, allergies, back pain. Practical self-care and the warning signs to watch for.</p></article>
+          <article class="card"><span class="card-icon"><svg class="icon" aria-hidden="true"><use href="#i-clipboard"/></svg></span><h3 data-i18n="uses.3t">Making sense of results</h3><p data-i18n="uses.3">Lab results on sundhed.dk or a hospital letter full of jargon? It explains the terms in plain language and suggests what to ask your doctor.</p></article>
+          <article class="card"><span class="card-icon"><svg class="icon" aria-hidden="true"><use href="#i-pill"/></svg></span><h3 data-i18n="uses.4t">Questions about medicines</h3><p data-i18n="uses.4">How to take it, common side effects, what to do if you forgot a dose, and what not to combine. Information, not a new prescription.</p></article>
+          <article class="card"><span class="card-icon"><svg class="icon" aria-hidden="true"><use href="#i-pulse"/></svg></span><h3 data-i18n="uses.5t">Living with a long-term condition</h3><p data-i18n="uses.5">Support between check-ups for diabetes, high blood pressure, asthma and COPD, including knowing when to contact your own doctor.</p></article>
+          <article class="card"><span class="card-icon"><svg class="icon" aria-hidden="true"><use href="#i-heart"/></svg></span><h3 data-i18n="uses.6t">Feeling low or stressed</h3><p data-i18n="uses.6">A kind place to talk about sleep, stress, low mood or worry, with self-help that works and a direct route to real people and crisis lines when needed.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section id="how" class="section">
+      <div class="container">
+        <p class="eyebrow" data-i18n="how.eyebrow">How it works</p>
+        <h2 data-i18n="how.title">From "hmm, that's odd" to <em>peace of mind</em></h2>
+        <ol class="steps">
+          <li><span class="step-num">1</span><h3 data-i18n="how.1t">Sign in with MitID</h3><p data-i18n="how.1">So we know it's you, and so your children can be added safely to your account.</p></li>
+          <li><span class="step-num">2</span><h3 data-i18n="how.2t">Chat, call or show us</h3><p data-i18n="how.2">Pick whatever's easiest right now. Add photos any time during the conversation.</p></li>
+          <li><span class="step-num">3</span><h3 data-i18n="how.3t">Get a clear plan</h3><p data-i18n="how.3">What it might be, how urgent it is, and what to do next, written down for you to keep.</p></li>
+          <li><span class="step-num">4</span><h3 data-i18n="how.4t">A doctor, if you need one</h3><p data-i18n="how.4">Need a prescription, sick note or referral? A licensed doctor takes over, with your summary and photos already attached.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- LEGAL -->
+    <section id="legal" class="section section-alt">
+      <div class="container">
+        <p class="eyebrow" data-i18n="legal.eyebrow">Being honest about the limits</p>
+        <h2 data-i18n="legal.title">What an AI practitioner is <em>not</em> allowed to do in Denmark</h2>
+        <p class="section-lead" data-i18n="legal.lead">
+          Healthcare in Denmark is carefully regulated, and we think that's a good thing. Here's exactly where the line
+          is. For each of these, a licensed doctor takes over.
+        </p>
+
+        <div class="limits">
+          <div class="limit"><h3 data-i18n="legal.1t">Prescribe medicine</h3><p data-i18n="legal.1">Only authorised doctors (and, within their fields, a few other professions such as dentists) may issue prescriptions (<em>recepter</em>). The AI can explain medicines but can't prescribe, renew or change them.</p></div>
+          <div class="limit"><h3 data-i18n="legal.2t">Call itself a doctor</h3><p data-i18n="legal.2">"Læge" is a protected title under the Authorisation Act. On chat, voice and video, the AI always says it's an AI and never poses as a human physician.</p></div>
+          <div class="limit"><h3 data-i18n="legal.3t">Issue sick notes or certificates</h3><p data-i18n="legal.3">Medical certificates (<em>lægeerklæringer</em>) for employers, daycare, insurers, municipalities or driving licences must be signed by a doctor who takes professional responsibility.</p></div>
+          <div class="limit"><h3 data-i18n="legal.4t">Make referrals</h3><p data-i18n="legal.4">Referrals (<em>henvisninger</em>) to specialists, hospitals, physiotherapists or psychologists must come from a doctor. The AI can tell you when one is likely needed.</p></div>
+          <div class="limit"><h3 data-i18n="legal.5t">Give a final diagnosis or treat</h3><p data-i18n="legal.5">Photo and video feedback is an assessment, not a binding diagnosis. Treating illness is reserved for authorised health professionals, and unauthorised treatment that puts people at risk counts as quackery (<em>kvaksalveri</em>).</p></div>
+          <div class="limit"><h3 data-i18n="legal.6t">Replace your family's own GP</h3><p data-i18n="legal.6">Your assigned GP (<em>egen læge</em>) in the public health system stays your and your children's GP. We work alongside the public system, not instead of it.</p></div>
+          <div class="limit"><h3 data-i18n="legal.7t">Handle emergencies</h3><p data-i18n="legal.7">We're not an emergency service. If the AI notices signs of something serious, such as trouble breathing, a rash that doesn't fade or suicidal thoughts, it stops and tells you to call 112 or a crisis line.</p></div>
+          <div class="limit"><h3 data-i18n="legal.8t">Examine your child physically</h3><p data-i18n="legal.8">A camera can't replace hands. Listening to lungs, looking inside ears, blood tests, swabs and vaccinations all happen in a clinic.</p></div>
+        </div>
+
+        <h3 class="subhead" data-i18n="rules.title">The rules we build under</h3>
+        <div class="accordion">
+          <details><summary data-i18n="rules.1t">Authorisation Act (<em>Autorisationsloven</em>)</summary><p data-i18n="rules.1">Defines who may practise as a doctor, protects the title "læge", reserves certain activities for doctors and prohibits unauthorised treatment that puts people at risk. It's the main reason the AI assesses and advises, while a licensed doctor makes clinical decisions.</p></details>
+          <details><summary data-i18n="rules.2t">Health Act (<em>Sundhedsloven</em>)</summary><p data-i18n="rules.2">Sets out patients' rights: informed consent, confidentiality and access to your own records. Young people aged 15 and over can consent to their own treatment; for younger children, a parent with custody consents. Consultations with our doctors are recorded in a patient record under the Danish record-keeping rules.</p></details>
+          <details><summary data-i18n="rules.3t">Medicines Act &amp; prescription rules (<em>Lægemiddelloven</em>)</summary><p data-i18n="rules.3">Only authorised prescribers may prescribe medicines, and prescriptions go through the national electronic prescription system. The AI has no access to issue them.</p></details>
+          <details><summary data-i18n="rules.4t">EU Medical Device Regulation (MDR 2017/745)</summary><p data-i18n="rules.4">Software that assesses symptoms or analyses photos of skin is generally a medical device and must be CE-marked before it can be put on the market in the EU. The Danish Medicines Agency (<em>Lægemiddelstyrelsen</em>) supervises medical devices in Denmark. We won't launch before the required conformity assessment is complete.</p></details>
+          <details><summary data-i18n="rules.5t">EU AI Act</summary><p data-i18n="rules.5">AI that is, or is part of, a regulated medical device is high-risk, which brings requirements for risk management, data quality, human oversight and logging. The Act also requires people to be told when they're interacting with an AI, which matters especially for our voice and video calls. Our AI's face and voice are always labelled as AI.</p></details>
+          <details><summary data-i18n="rules.6t">GDPR &amp; the Danish Data Protection Act</summary><p data-i18n="rules.6">Health data, including photos of your skin and your children's, is a special category of personal data (GDPR Art. 9). It's processed only on a valid legal basis, kept in the EU, encrypted, never sold, and never used for advertising or training without explicit consent. You can see, export and delete it.</p></details>
+          <details><summary data-i18n="rules.7t">Supervision by the Danish Patient Safety Authority</summary><p data-i18n="rules.7">The doctors behind the service are supervised by <em>Styrelsen for Patientsikkerhed</em>, and online health services must be registered as healthcare providers (<em>behandlingssteder</em>). Adverse events are reported and handled as in any other Danish clinic.</p></details>
+          <details><summary data-i18n="rules.8t">Marketing of health services</summary><p data-i18n="rules.8">Danish rules require marketing of health services to be accurate and not misleading. That's why this page is clear about what the AI can't do, and why we don't promise outcomes.</p></details>
+        </div>
+        <p class="fineprint" data-i18n="rules.fine">A summary of the regulatory framework for information only, not legal advice. The final service design is subject to review by legal counsel and the relevant Danish authorities.</p>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="section">
+      <div class="container narrow">
+        <p class="eyebrow" data-i18n="nav.faq">FAQ</p>
+        <h2 data-i18n="faq.title">Questions you might have</h2>
+        <div class="accordion">
+          <details><summary data-i18n="faq.1t">Is it a real doctor?</summary><p data-i18n="faq.1">No, and it'll always tell you so. Synthetic Practitioner is an AI trained to hold a medical conversation the way a kind, thorough GP would. The face and voice on video and voice calls are generated by AI too. When a licensed doctor is needed, you're handed over to a real person, and it's always clear who you're talking to.</p></details>
+          <details><summary data-i18n="faq.2t">Can I use it for my children?</summary><p data-i18n="faq.2">Yes, that's one of the main reasons we're building it. Parents will be able to add their children to their account through MitID. For babies and very young children, the AI is extra cautious and quicker to recommend a human doctor.</p></details>
+          <details><summary data-i18n="faq.3t">What happens to the photos I send?</summary><p data-i18n="faq.3">They're used for your consultation only, stored encrypted in the EU as part of your record, and you can delete them. They're never shared, sold or used to train the AI without your explicit consent.</p></details>
+          <details><summary data-i18n="faq.4t">Do I need video for it to work?</summary><p data-i18n="faq.4">Not at all. Chat works everywhere, voice is great when your hands are full, and video is there when showing is easier than explaining.</p></details>
+          <details><summary data-i18n="faq.5t">When will it launch?</summary><p data-i18n="faq.5">We're still building it. We'll open to waitlist members in small groups once the service has passed the required medical device and safety approvals, and we'll email you before that happens.</p></details>
+          <details><summary data-i18n="faq.6t">What will it cost?</summary><p data-i18n="faq.6">Pricing isn't set yet. Our aim is for talking to the AI practitioner to cost much less than a private online consultation, with a clear price for any handover to a human doctor.</p></details>
+          <details><summary data-i18n="faq.7t">Who's behind it?</summary><p data-i18n="faq.7">Synthetic Practitioner is being built by vaerksted.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <!-- WAITLIST -->
+    <section id="waitlist" class="section waitlist">
+      <div class="container waitlist-grid">
+        <div>
+          <p class="eyebrow" data-i18n="wl.eyebrow">Early access</p>
+          <h2 data-i18n="wl.title">Come and try it with us</h2>
+          <p data-i18n="wl.lead">Join the waitlist and we'll invite you as soon as we open. Early members help shape the product: how it talks, what it handles, and when it should hand over to a human.</p>
+          <ul class="checklist">
+            <li data-i18n="wl.c1">Early access before public launch</li>
+            <li data-i18n="wl.c2">A few friendly updates, no spam</li>
+            <li data-i18n="wl.c3">Leave the list whenever you like</li>
+          </ul>
+        </div>
+
+        <form id="waitlist-form" class="form" novalidate data-endpoint="/api/waitlist">
+          <div class="field">
+            <label for="name"><span data-i18n="wl.name">First name</span> <span class="optional" data-i18n="wl.optional">(optional)</span></label>
+            <input id="name" name="name" type="text" autocomplete="given-name" maxlength="100">
+          </div>
+          <div class="field">
+            <label for="email" data-i18n="wl.email">Email</label>
+            <input id="email" name="email" type="email" autocomplete="email" required maxlength="254" aria-describedby="email-error">
+            <span class="error" id="email-error" role="alert"></span>
+          </div>
+          <div class="field">
+            <label for="region" data-i18n="wl.region">Where do you live?</label>
+            <select id="region" name="region">
+              <option value="" data-i18n="wl.regionPick">Choose region</option>
+              <option value="hovedstaden" data-i18n="wl.r1">Capital Region (Hovedstaden)</option>
+              <option value="sjaelland" data-i18n="wl.r2">Zealand (Sjælland)</option>
+              <option value="syddanmark" data-i18n="wl.r3">Southern Denmark (Syddanmark)</option>
+              <option value="midtjylland" data-i18n="wl.r4">Central Denmark (Midtjylland)</option>
+              <option value="nordjylland" data-i18n="wl.r5">North Denmark (Nordjylland)</option>
+              <option value="outside-dk" data-i18n="wl.r6">Outside Denmark</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="household" data-i18n="wl.household">Who would you use it for?</label>
+            <select id="household" name="household">
+              <option value="" data-i18n="wl.hPick">Choose one</option>
+              <option value="me" data-i18n="wl.h1">Just me</option>
+              <option value="young-children" data-i18n="wl.h2">Me and young children (0–6)</option>
+              <option value="children" data-i18n="wl.h3">Me and school-age children</option>
+              <option value="family" data-i18n="wl.h4">Other family members</option>
+            </select>
+          </div>
+          <fieldset class="field">
+            <legend><span data-i18n="wl.interests">What are you most curious about?</span> <span class="optional" data-i18n="wl.optional">(optional)</span></legend>
+            <div class="chips">
+              <label class="chip"><input type="checkbox" name="interests" value="chat"><span data-i18n="modes.chat">Chat</span></label>
+              <label class="chip"><input type="checkbox" name="interests" value="voice"><span data-i18n="wl.i2">Voice calls</span></label>
+              <label class="chip"><input type="checkbox" name="interests" value="video"><span data-i18n="wl.i3">Video calls</span></label>
+              <label class="chip"><input type="checkbox" name="interests" value="photos"><span data-i18n="photos.eyebrow">Photo feedback</span></label>
+              <label class="chip"><input type="checkbox" name="interests" value="children"><span data-i18n="wl.i5">Children's health</span></label>
+              <label class="chip"><input type="checkbox" name="interests" value="chronic"><span data-i18n="wl.i6">Long-term condition</span></label>
+            </div>
+          </fieldset>
+          <div class="hp" aria-hidden="true">
+            <label for="company">Company</label>
+            <input id="company" name="company" type="text" tabindex="-1" autocomplete="off">
+          </div>
+          <div class="field consent">
+            <input id="consent" name="consent" type="checkbox" required aria-describedby="consent-error">
+            <label for="consent" data-i18n="wl.consent">I agree that vaerksted may store my details to contact me about Synthetic Practitioner. I can withdraw my consent at any time.</label>
+          </div>
+          <span class="error" id="consent-error" role="alert"></span>
+          <button type="submit" class="btn btn-full" data-i18n="wl.submit">Join the waitlist</button>
+          <p class="form-note" data-i18n="wl.note">Please don't share any health information in this form.</p>
+        </form>
+
+        <div id="waitlist-success" class="success" hidden tabindex="-1">
+          <div class="success-icon" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></div>
+          <h3 data-i18n="wl.okTitle">You're on the list!</h3>
+          <p data-i18n="wl.ok">Thank you. We'll send you an email as soon as early access opens.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div data-i18n="footer.by"><strong>Synthetic Practitioner</strong> · an idea by vaerksted</div>
+      <p class="disclaimer" data-i18n="footer.disclaimer">
+        Synthetic Practitioner is in development and not yet available. It isn't a medical device on the market, doesn't give medical
+        advice today and doesn't replace a doctor. Examples on this page are illustrations. In an emergency, call 112.
+      </p>
+      <p class="copy">© <span id="year">2026</span> vaerksted</p>
+    </div>
+  </footer>
+
+  <script src="i18n.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
