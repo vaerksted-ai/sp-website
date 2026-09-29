@@ -58,14 +58,17 @@ export async function onRequestPost({ request, env }) {
     ? [...new Set(body.interests.filter((i) => typeof i === 'string' && INTERESTS.has(i)))]
     : [];
 
-  if (!env.DB) {
+  // wrangler.toml binds the database as DB; a binding added in the Cloudflare
+  // dashboard may use the name suggested by `wrangler d1 create` instead.
+  const db = env.DB || env.sp_waitlist;
+  if (!db) {
     console.error('waitlist: D1 binding "DB" is not configured');
     return json({ ok: false, error: 'not_configured' }, 500);
   }
 
   const now = new Date().toISOString();
   try {
-    await env.DB.prepare(
+    await db.prepare(
       `INSERT INTO waitlist (email, name, region, household, interests, lang, consent_version, consent_at, created_at, updated_at)
        VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?8, ?8)
        ON CONFLICT(email) DO UPDATE SET

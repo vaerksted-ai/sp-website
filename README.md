@@ -44,10 +44,10 @@ npm run dev                # http://localhost:8788, site + API
 One-time setup:
 
 1. `npx wrangler login`
-2. `npx wrangler d1 create sp-waitlist --jurisdiction eu` (keeps waitlist data in the EU). Copy the printed `database_id` into `wrangler.toml`.
+2. The D1 database `sp-waitlist` already exists and its id is in `wrangler.toml`. (To create it again elsewhere: `npx wrangler d1 create sp-waitlist --jurisdiction eu`, then update the id.)
 3. `npm run db:migrate` to create the table in the remote database.
 4. Create the Pages project, either:
-   - **Git integration** (recommended): in the Cloudflare dashboard, go to Workers & Pages → Create → Pages → connect this repository. Build command: *none*; build output directory: `public`. Cloudflare reads the D1 binding from `wrangler.toml`. If it doesn't, add it under Settings → Bindings → D1 database, with variable name `DB` and database `sp-waitlist`.
+   - **Git integration** (recommended): in the Cloudflare dashboard, go to Workers & Pages → Create → Pages → connect this repository. Build command: *none*; build output directory: `public`. Cloudflare reads the D1 binding from `wrangler.toml`. If it doesn't, add it under Settings → Bindings → D1 database, with database `sp-waitlist` and variable name `DB` (`sp_waitlist` also works).
    - **Direct upload**: `npm run deploy`
 
 After that, every push to the production branch deploys automatically (with Git integration), and other branches get preview URLs.

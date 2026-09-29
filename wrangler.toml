@@ -6,6 +6,5 @@ compatibility_date = "2025-09-01"
 [[d1_databases]]
 binding = "DB"
 database_name = "sp-waitlist"
-# Replace with the id printed by `npx wrangler d1 create sp-waitlist` (see README).
-database_id = "00000000-0000-0000-0000-000000000000"
+database_id = "5bad2dc4-e22c-4722-b186-5888a751f242"
 migrations_dir = "migrations"

@@ -28,17 +28,25 @@
     var total;
 
     if (mode === 'video') {
+      // Each caption moves the call on a stage: 1 = AI marks the rash,
+      // 2 = glass pressed on, 3 = spots fade under the glass.
       var cap = panel.querySelector('.captions');
+      var stage = el('video-main'), chip = el('video-chip');
       var captions = t('video.captions');
+      var setStage = function (i) {
+        stage.setAttribute('data-stage', i);
+        chip.textContent = t(i >= 3 ? 'video.chip2' : 'video.chip1');
+      };
+      setStage(reduceMotion ? 3 : 0);
       cap.textContent = captions[0];
       captions.forEach(function (text, i) {
         if (!i) return;
         later(function () {
           cap.style.opacity = 0;
-          later(function () { cap.textContent = text; cap.style.opacity = 1; }, 250);
-        }, i * 2800);
+          later(function () { cap.textContent = text; cap.style.opacity = 1; if (!reduceMotion) setStage(i); }, 250);
+        }, i * 3000);
       });
-      total = captions.length * 2800;
+      total = captions.length * 3000;
     } else {
       Array.prototype.forEach.call(steps, function (s, i) {
         s.classList.remove('in');
@@ -133,6 +141,24 @@
 
   var viralSpots = spots(7, 80, 200, 150, 170, 120, 2, 4.6, '#d4574a');
 
+  // Video call: the parent's camera, showing spots on a child's tummy.
+  (function renderCam() {
+    var dots = spots(12, 34, 150, 120, 72, 50, 1.6, 3.2, '#cf5a4c');
+    el('cam-view').innerHTML =
+      '<defs><radialGradient id="camskin" gradientUnits="userSpaceOnUse" cx="140" cy="100" r="230">' +
+      '<stop offset="0" stop-color="#f1c4a3"/><stop offset=".75" stop-color="#e2a987"/><stop offset="1" stop-color="#c98e6e"/></radialGradient>' +
+      '<clipPath id="cam-glass-clip"><circle cx="178" cy="128" r="34"/></clipPath></defs>' +
+      '<rect width="320" height="240" fill="url(#camskin)"/>' +
+      '<ellipse cx="238" cy="182" rx="7" ry="5" fill="#b77a5c" opacity=".5" filter="url(#soft)"/>' +
+      '<g filter="url(#soft)">' + dots + '</g>' +
+      '<g class="cam-mark"><path d="M70 66V54h12M218 54h12v12M230 174v12h-12M82 186H70v-12" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/>' +
+      '<ellipse class="cam-ring" cx="150" cy="120" rx="80" ry="58" fill="none" stroke="#fff" stroke-width="2" stroke-dasharray="6 5"/></g>' +
+      '<g class="cam-glass"><g clip-path="url(#cam-glass-clip)"><rect width="320" height="240" fill="url(#camskin)"/>' +
+      '<g class="cam-blanch" filter="url(#soft)">' + dots + '</g></g>' +
+      '<circle cx="178" cy="128" r="34" fill="rgba(255,255,255,.12)" stroke="#fff" stroke-width="4"/>' +
+      '<path d="M156 112a26 26 0 0 1 16-12" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round" opacity=".8"/></g>';
+  })();
+
   // `note` is the index into the case's translated marks list.
   var CASES = [
     {
@@ -216,8 +242,8 @@
   function ct(c, field) { return t('case.' + c.id + '.' + field); }
 
   function pin(x, y, n) {
-    return '<g class="ov-pin"><circle cx="' + x + '" cy="' + y + '" r="12" fill="#c4502f" stroke="#fff" stroke-width="2.5"/>' +
-      '<text x="' + x + '" y="' + (y + 4) + '" fill="#fff" font-size="12" font-weight="800" text-anchor="middle" font-family="Nunito, sans-serif">' + n + '</text></g>';
+    return '<g class="ov-pin"><circle cx="' + x + '" cy="' + y + '" r="12" fill="#1e6b5c" stroke="#fff" stroke-width="2.5"/>' +
+      '<text x="' + x + '" y="' + (y + 4) + '" fill="#fff" font-size="12" font-weight="800" text-anchor="middle" font-family="Inter, sans-serif">' + n + '</text></g>';
   }
 
   function markSVG(m, i) {
@@ -240,7 +266,7 @@
       g += '<path d="' + d + '" ' + shadow + '/><path d="' + d + '" stroke="#fff" stroke-width="2.5" fill="none"/>';
       var mid = (m.x1 + m.x2) / 2, w = m.label.length * 7 + 18;
       g += '<rect x="' + (mid - w / 2) + '" y="' + (m.y1 - 30) + '" width="' + w + '" height="20" rx="10" fill="rgba(46,35,32,.75)"/>' +
-        '<text x="' + mid + '" y="' + (m.y1 - 16) + '" fill="#fff" font-size="11.5" font-weight="700" text-anchor="middle" font-family="Nunito, sans-serif">' + m.label + '</text>';
+        '<text x="' + mid + '" y="' + (m.y1 - 16) + '" fill="#fff" font-size="11.5" font-weight="700" text-anchor="middle" font-family="Inter, sans-serif">' + m.label + '</text>';
     }
     return '<g class="ov-mark"' + (m.note !== undefined ? ' data-note="' + m.note + '"' : '') + '>' + g + '</g>';
   }
@@ -345,7 +371,7 @@
       '<g id="glass-move"><circle r="56" fill="none" stroke="rgba(46,35,32,.3)" stroke-width="9"/><circle r="56" fill="none" stroke="#fff" stroke-width="5" opacity=".95"/>' +
       '<path d="M-38 -28 A 46 46 0 0 1 -8 -46" stroke="#fff" stroke-width="5" stroke-linecap="round" fill="none" opacity=".8"/>' +
       '<g transform="translate(0 72)"><rect x="-62" y="-12" width="124" height="24" rx="12" fill="rgba(46,35,32,.75)"/>' +
-      '<text y="4" fill="#fff" font-size="11.5" font-weight="700" text-anchor="middle" font-family="Nunito, sans-serif"></text></g></g>';
+      '<text y="4" fill="#fff" font-size="11.5" font-weight="700" text-anchor="middle" font-family="Inter, sans-serif"></text></g></g>';
     glassG.querySelector('text').textContent = t('glass.drag');
     moveGlass(gl.x, gl.y);
     overlayG.classList.add('off');

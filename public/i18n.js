@@ -25,6 +25,8 @@
         "They fade under the glass. That's a reassuring sign.",
         "I'll write down what we saw and what to watch for tonight."
       ],
+      'video.chip1': 'Small, flat spots · 2–4 mm',
+      'video.chip2': 'Fades under pressure ✓',
       'photo.default': 'Example photo',
       'photo.scanning': 'Looking closely…',
       'photo.noticed': '{n} things I noticed',
@@ -125,7 +127,7 @@
 
       'chat.sub': 'AI-doktor · svarer på få sekunder',
       'chat.m1': 'Hej, min 2-årige har 39,2 °C i feber i aften. Hun drikker, men hun er virkelig træt.',
-      'chat.m2': 'Åh, stakkels lille pige – og stakkels dig på det her tidspunkt 💛 Lad os finde ud af det sammen. Når hun er vågen, reagerer hun så på dig og kigger på dig, som hun plejer? Og har du set noget udslæt?',
+      'chat.m2': 'Åh, stakkels lille pige – og stakkels dig på det her tidspunkt. Lad os finde ud af det sammen. Når hun er vågen, reagerer hun så på dig og kigger på dig, som hun plejer? Og har du set noget udslæt?',
       'chat.m3': 'Ja, hun er kælen og har endda leget lidt. Intet udslæt.',
       'chat.m4': 'Det er rigtig gode tegn. Feber er kroppens måde at bekæmpe en infektion på og er ikke farligt i sig selv. Bliv ved med at give hende noget at drikke, og lad hende hvile.<span class="tip">Jeg tjekker ind hos dig i morgen tidlig. Hvis hun bliver slap, svær at vække eller trækker vejret besværet, så ring 112 med det samme.</span>',
 
@@ -200,17 +202,17 @@
 
       'uses.eyebrow': 'Og til de voksne',
       'uses.title': 'Alt det hverdagsagtige, du ville tage med til din egen læge',
-      'uses.1t': '🩺 „Hvor akut er det her?“',
+      'uses.1t': '„Hvor akut er det her?“',
       'uses.1': 'Beskriv med dine egne ord, hvad der er galt. Du får et klart svar: pas på dig selv derhjemme, se en læge i denne uge, ring til lægevagten nu, eller ring 112.',
-      'uses.2t': '🤧 Almindelig sygdom',
+      'uses.2t': 'Almindelig sygdom',
       'uses.2': 'Forkølelse, influenza, ondt i halsen, gener ved vandladning, allergi, rygsmerter. Praktiske råd om egenomsorg og de advarselstegn, du skal holde øje med.',
-      'uses.3t': '📋 Forstå dine prøvesvar',
+      'uses.3t': 'Forstå dine prøvesvar',
       'uses.3': 'Prøvesvar på sundhed.dk eller et brev fra hospitalet fuld af fagsprog? Den forklarer begreberne i et almindeligt sprog og foreslår, hvad du kan spørge din læge om.',
-      'uses.4t': '💊 Spørgsmål om medicin',
+      'uses.4t': 'Spørgsmål om medicin',
       'uses.4': 'Hvordan du tager den, almindelige bivirkninger, hvad du gør, hvis du har glemt en dosis, og hvad du ikke skal kombinere. Information – ikke en ny recept.',
-      'uses.5t': '📈 At leve med en kronisk sygdom',
+      'uses.5t': 'At leve med en kronisk sygdom',
       'uses.5': 'Støtte mellem kontrollerne ved diabetes, forhøjet blodtryk, astma og KOL – og hjælp til at vide, hvornår du skal kontakte din egen læge.',
-      'uses.6t': '🌱 Når du er nedtrykt eller stresset',
+      'uses.6t': 'Når du er nedtrykt eller stresset',
       'uses.6': 'Et venligt sted at tale om søvn, stress, tristhed eller bekymringer, med selvhjælp, der virker, og en direkte vej til rigtige mennesker og krisehjælp, når der er brug for det.',
 
       'how.eyebrow': 'Sådan virker det',
@@ -324,6 +326,8 @@
         'De forsvinder under glasset. Det er et beroligende tegn.',
         'Jeg skriver ned, hvad vi så, og hvad du skal holde øje med i nat.'
       ],
+      'video.chip1': 'Små, flade prikker · 2–4 mm',
+      'video.chip2': 'Forsvinder ved tryk ✓',
       'photo.default': 'Eksempelbillede',
       'photo.scanning': 'Kigger nærmere…',
       'photo.noticed': '{n} ting, jeg bemærker',
